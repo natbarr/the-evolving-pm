@@ -1,0 +1,86 @@
+import type { Category, Level, Format, ContentType } from "./supabase/types";
+
+export const CATEGORIES: Record<Category, { name: string; description: string }> = {
+  "ai-fundamentals": {
+    name: "AI Fundamentals",
+    description:
+      "Core concepts of artificial intelligence, machine learning, and large language models that every PM should understand.",
+  },
+  "prompt-engineering": {
+    name: "Prompt Engineering",
+    description:
+      "Techniques for crafting effective prompts to get the best results from AI systems.",
+  },
+  "technical-skills": {
+    name: "Technical Skills",
+    description:
+      "Hands-on skills for working with AI tools, APIs, and development workflows.",
+  },
+  "strategy-leadership": {
+    name: "Strategy & Leadership",
+    description:
+      "How to lead AI product initiatives, build AI strategy, and drive organizational change.",
+  },
+  "ethics-governance": {
+    name: "Ethics & Governance",
+    description:
+      "Responsible AI practices, bias mitigation, privacy considerations, and regulatory compliance.",
+  },
+  "career-development": {
+    name: "Career Development",
+    description:
+      "Growing your career as an AI-savvy product manager in a rapidly evolving landscape.",
+  },
+  "tools-workflows": {
+    name: "Tools & Workflows",
+    description:
+      "Practical tools and workflows for integrating AI into your daily product management work.",
+  },
+  "case-studies": {
+    name: "Case Studies",
+    description:
+      "Real-world examples of AI product launches, pivots, and lessons learned.",
+  },
+};
+
+export const LEVELS: Record<Level, { name: string; description: string }> = {
+  beginner: {
+    name: "Beginner",
+    description: "No prior AI knowledge required. Great starting point.",
+  },
+  intermediate: {
+    name: "Intermediate",
+    description: "Some familiarity with AI concepts expected.",
+  },
+  expert: {
+    name: "Expert",
+    description: "Deep dive for experienced practitioners.",
+  },
+};
+
+export const FORMATS: Record<Format, { name: string; icon: string }> = {
+  article: { name: "Article", icon: "📄" },
+  video: { name: "Video", icon: "🎬" },
+  course: { name: "Course", icon: "🎓" },
+  podcast: { name: "Podcast", icon: "🎧" },
+  book: { name: "Book", icon: "📚" },
+  tool: { name: "Tool", icon: "🛠️" },
+  newsletter: { name: "Newsletter", icon: "📬" },
+  community: { name: "Community", icon: "👥" },
+};
+
+export const CONTENT_TYPE_REVIEW_DAYS: Record<ContentType, number> = {
+  evergreen: 180,
+  "model-dependent": 90,
+  "time-sensitive": 30,
+  "periodically-updated": 60,
+};
+
+export const SITE_CONFIG = {
+  name: "The Evolving PM",
+  description:
+    "A curated resource library for Product Managers navigating AI's impact on their craft.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://theevolvingpm.com",
+};
+
+export const ITEMS_PER_PAGE = 15;
