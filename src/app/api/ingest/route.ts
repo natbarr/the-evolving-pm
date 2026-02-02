@@ -6,11 +6,13 @@ import type { ContentType } from "@/lib/supabase/types";
 
 const CategoryEnum = z.enum([
   "ai-fundamentals",
+  "ai-product-strategy",
   "prompt-engineering",
   "technical-skills",
-  "strategy-leadership",
+  "business-economics",
+  "go-to-market",
   "ethics-governance",
-  "career-development",
+  "career",
   "tools-workflows",
   "case-studies",
 ]);
@@ -24,15 +26,18 @@ const FormatEnum = z.enum([
   "podcast",
   "book",
   "tool",
+  "repository",
   "newsletter",
   "community",
 ]);
 
 const ContentTypeEnum = z.enum([
-  "evergreen",
+  "conceptual",
+  "tool-specific",
   "model-dependent",
+  "pricing",
+  "career",
   "time-sensitive",
-  "periodically-updated",
 ]);
 
 const AccessTypeEnum = z.enum(["free", "paid", "freemium"]);
@@ -49,16 +54,33 @@ const ResourceSchema = z.object({
   summary: z.string().min(1, "Summary is required"),
   status: StatusEnum,
   access_type: AccessTypeEnum.optional().default("free"),
+  access_notes: z.string().optional(),
   confidence: z.number().int().min(1).max(5).optional().default(4),
   author: z.string().optional(),
   source: z.string().optional(),
   publication_date: z.string().optional(),
+  last_verified: z.string().optional(),
+  next_review: z.string().optional(),
 });
 
-const IngestSchema = z.object({
-  evaluated_at: z.string(),
-  resources: z.array(ResourceSchema).min(1, "At least one resource is required"),
-});
+// Support both flat format and metadata wrapper format
+const IngestSchema = z.union([
+  // Flat format: { evaluated_at, resources }
+  z.object({
+    evaluated_at: z.string(),
+    resources: z.array(ResourceSchema).min(1, "At least one resource is required"),
+  }),
+  // Wrapper format: { metadata: { assessment_date }, resources }
+  z.object({
+    metadata: z.object({
+      schema_version: z.string().optional(),
+      assessment_date: z.string(),
+      notes: z.string().optional(),
+    }),
+    resources: z.array(ResourceSchema).min(1, "At least one resource is required"),
+    rejected: z.array(z.any()).optional(),
+  }),
+]);
 
 export async function POST(request: NextRequest) {
   const apiKey = request.headers.get("X-API-Key");
@@ -94,7 +116,14 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { evaluated_at, resources } = parseResult.data;
+  const data = parseResult.data;
+
+  // Extract evaluated_at from either format
+  const evaluated_at = "metadata" in data
+    ? data.metadata.assessment_date
+    : data.evaluated_at;
+
+  const resources = data.resources;
   const supabase = createServiceClient();
 
   const results: {
@@ -106,7 +135,10 @@ export async function POST(request: NextRequest) {
 
   for (const resource of resources) {
     const slug = slugify(resource.title);
-    const nextReview = calculateNextReview(resource.content_type as ContentType);
+
+    // Use provided next_review or calculate from content_type
+    const nextReview = resource.next_review ||
+      calculateNextReview(resource.content_type as ContentType);
 
     const resourceData = {
       title: resource.title,
@@ -117,6 +149,7 @@ export async function POST(request: NextRequest) {
       format: resource.format,
       content_type: resource.content_type,
       access_type: resource.access_type,
+      access_notes: resource.access_notes || null,
       summary: resource.summary,
       status: resource.status,
       confidence: resource.confidence,
@@ -124,7 +157,7 @@ export async function POST(request: NextRequest) {
       source: resource.source || null,
       publication_date: resource.publication_date || null,
       date_evaluated: evaluated_at,
-      last_verified: new Date().toISOString(),
+      last_verified: resource.last_verified || new Date().toISOString(),
       next_review: nextReview,
     };
 

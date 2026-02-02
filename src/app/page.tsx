@@ -7,9 +7,9 @@ import type { Category } from "@/lib/supabase/types";
 export default function HomePage() {
   const featuredCategories: Category[] = [
     "ai-fundamentals",
-    "prompt-engineering",
+    "ai-product-strategy",
     "technical-skills",
-    "strategy-leadership",
+    "business-economics",
   ];
 
   return (

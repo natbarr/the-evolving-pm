@@ -9,6 +9,7 @@ CREATE TABLE resources (
   format TEXT NOT NULL,
   content_type TEXT NOT NULL,
   access_type TEXT NOT NULL DEFAULT 'free',
+  access_notes TEXT,
   summary TEXT NOT NULL,
   author TEXT,
   source TEXT,
@@ -53,13 +54,15 @@ CREATE TABLE categories (
 -- Seed default categories
 INSERT INTO categories (slug, name, description, display_order) VALUES
   ('ai-fundamentals', 'AI Fundamentals', 'Core concepts of artificial intelligence, machine learning, and large language models that every PM should understand.', 1),
-  ('prompt-engineering', 'Prompt Engineering', 'Techniques for crafting effective prompts to get the best results from AI systems.', 2),
-  ('technical-skills', 'Technical Skills', 'Hands-on skills for working with AI tools, APIs, and development workflows.', 3),
-  ('strategy-leadership', 'Strategy & Leadership', 'How to lead AI product initiatives, build AI strategy, and drive organizational change.', 4),
-  ('ethics-governance', 'Ethics & Governance', 'Responsible AI practices, bias mitigation, privacy considerations, and regulatory compliance.', 5),
-  ('career-development', 'Career Development', 'Growing your career as an AI-savvy product manager in a rapidly evolving landscape.', 6),
-  ('tools-workflows', 'Tools & Workflows', 'Practical tools and workflows for integrating AI into your daily product management work.', 7),
-  ('case-studies', 'Case Studies', 'Real-world examples of AI product launches, pivots, and lessons learned.', 8);
+  ('ai-product-strategy', 'AI Product Strategy', 'Frameworks for building AI product strategy, achieving product-market fit, and navigating the unique challenges of AI products.', 2),
+  ('prompt-engineering', 'Prompt Engineering', 'Techniques for crafting effective prompts to get the best results from AI systems.', 3),
+  ('technical-skills', 'Technical Skills', 'Hands-on skills for working with AI tools, APIs, and development workflows.', 4),
+  ('business-economics', 'Business & Economics', 'AI product pricing, cost optimization, unit economics, and building sustainable AI businesses.', 5),
+  ('go-to-market', 'Go-to-Market', 'Distribution strategies, growth loops, and market entry tactics for AI products.', 6),
+  ('ethics-governance', 'Ethics & Governance', 'Responsible AI practices, bias mitigation, privacy considerations, and regulatory compliance.', 7),
+  ('career', 'Career', 'Growing your career as an AI-savvy product manager in a rapidly evolving landscape.', 8),
+  ('tools-workflows', 'Tools & Workflows', 'Practical tools and workflows for integrating AI into your daily product management work.', 9),
+  ('case-studies', 'Case Studies', 'Real-world examples of AI product launches, pivots, and lessons learned.', 10);
 
 -- Updated at trigger function
 CREATE OR REPLACE FUNCTION update_updated_at_column()

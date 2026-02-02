@@ -1,10 +1,12 @@
 export type Category =
   | "ai-fundamentals"
+  | "ai-product-strategy"
   | "prompt-engineering"
   | "technical-skills"
-  | "strategy-leadership"
+  | "business-economics"
+  | "go-to-market"
   | "ethics-governance"
-  | "career-development"
+  | "career"
   | "tools-workflows"
   | "case-studies";
 
@@ -17,14 +19,17 @@ export type Format =
   | "podcast"
   | "book"
   | "tool"
+  | "repository"
   | "newsletter"
   | "community";
 
 export type ContentType =
-  | "evergreen"
+  | "conceptual"
+  | "tool-specific"
   | "model-dependent"
-  | "time-sensitive"
-  | "periodically-updated";
+  | "pricing"
+  | "career"
+  | "time-sensitive";
 
 export type AccessType = "free" | "paid" | "freemium";
 
@@ -46,6 +51,7 @@ export interface Resource {
   author: string | null;
   source: string | null;
   publication_date: string | null;
+  access_notes: string | null;
   status: ResourceStatus;
   confidence: number;
   date_evaluated: string;

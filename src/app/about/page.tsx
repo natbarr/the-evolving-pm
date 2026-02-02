@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG, CATEGORIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
@@ -123,54 +123,14 @@ export default function AboutPage() {
             areas for AI-savvy Product Managers:
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">AI Fundamentals</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Core concepts every PM should understand
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Prompt Engineering</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Techniques for effective AI interaction
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Technical Skills</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Hands-on tools and development workflows
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Strategy & Leadership</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Leading AI initiatives and building strategy
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Ethics & Governance</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Responsible AI practices and compliance
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Career Development</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Growing as an AI-savvy PM
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Tools & Workflows</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Practical AI integration in daily work
-              </p>
-            </div>
-            <div className="border border-primary-200 rounded-lg p-4">
-              <h3 className="font-semibold text-primary-900">Case Studies</h3>
-              <p className="text-sm text-primary-600 mt-1">
-                Real-world AI product examples
-              </p>
-            </div>
+            {Object.entries(CATEGORIES).map(([slug, category]) => (
+              <div key={slug} className="border border-primary-200 rounded-lg p-4">
+                <h3 className="font-semibold text-primary-900">{category.name}</h3>
+                <p className="text-sm text-primary-600 mt-1">
+                  {category.description}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 

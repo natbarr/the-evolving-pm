@@ -6,6 +6,11 @@ export const CATEGORIES: Record<Category, { name: string; description: string }>
     description:
       "Core concepts of artificial intelligence, machine learning, and large language models that every PM should understand.",
   },
+  "ai-product-strategy": {
+    name: "AI Product Strategy",
+    description:
+      "Frameworks for building AI product strategy, achieving product-market fit, and navigating the unique challenges of AI products.",
+  },
   "prompt-engineering": {
     name: "Prompt Engineering",
     description:
@@ -16,18 +21,23 @@ export const CATEGORIES: Record<Category, { name: string; description: string }>
     description:
       "Hands-on skills for working with AI tools, APIs, and development workflows.",
   },
-  "strategy-leadership": {
-    name: "Strategy & Leadership",
+  "business-economics": {
+    name: "Business & Economics",
     description:
-      "How to lead AI product initiatives, build AI strategy, and drive organizational change.",
+      "AI product pricing, cost optimization, unit economics, and building sustainable AI businesses.",
+  },
+  "go-to-market": {
+    name: "Go-to-Market",
+    description:
+      "Distribution strategies, growth loops, and market entry tactics for AI products.",
   },
   "ethics-governance": {
     name: "Ethics & Governance",
     description:
       "Responsible AI practices, bias mitigation, privacy considerations, and regulatory compliance.",
   },
-  "career-development": {
-    name: "Career Development",
+  "career": {
+    name: "Career",
     description:
       "Growing your career as an AI-savvy product manager in a rapidly evolving landscape.",
   },
@@ -65,15 +75,18 @@ export const FORMATS: Record<Format, { name: string; icon: string }> = {
   podcast: { name: "Podcast", icon: "🎧" },
   book: { name: "Book", icon: "📚" },
   tool: { name: "Tool", icon: "🛠️" },
+  repository: { name: "Repository", icon: "📦" },
   newsletter: { name: "Newsletter", icon: "📬" },
   community: { name: "Community", icon: "👥" },
 };
 
 export const CONTENT_TYPE_REVIEW_DAYS: Record<ContentType, number> = {
-  evergreen: 180,
-  "model-dependent": 90,
+  "conceptual": 180,
+  "tool-specific": 90,
+  "model-dependent": 120,
+  "pricing": 180,
+  "career": 180,
   "time-sensitive": 30,
-  "periodically-updated": 60,
 };
 
 export const SITE_CONFIG = {
