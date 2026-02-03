@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-03"
+  },
+  "resources": [
+    {
+      "title": "Claude Code for Product Managers (Teresa Torres)",
+      "url": "https://www.lennysnewsletter.com/p/this-week-on-how-i-ai-claude-code",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "podcast",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-01-19",
+      "last_verified": "2026-02-03",
+      "next_review": "2026-05-03",
+      "confidence": 4,
+      "author": "Lenny Rachitsky, Teresa Torres",
+      "source": "Lenny's Newsletter",
+      "summary": "This podcast episode from Lenny Rachitsky's \"How I AI\" series features Teresa Torres, author of Continuous Discovery Habits, discussing her practical use of Claude Code for productivity and workflow management. Torres emphasizes efficiency over complexity, noting that reducing friction matters more than adding features. She demonstrates how Claude serves as a personal knowledge retriever and strategic automation partner.\n\nKey insights for product managers include treating Claude as a critical reviewer rather than primary creator, organizing context through multiple focused files rather than one massive document, and maintaining index files for effective navigation. The episode provides practical frameworks for task management, research automation, and personalized systems that knowledge workers can immediately apply."
+    },
+    {
+      "title": "Claude Code for Everything: Finally, that Personal Assistant You've Always Wanted",
+      "url": "https://hannahstulberg.substack.com/p/claude-code-for-everything-finally",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-01-09",
+      "last_verified": "2026-02-03",
+      "next_review": "2026-05-03",
+      "confidence": 4,
+      "author": "Hannah Stulberg",
+      "source": "In the Weeds (Substack)",
+      "summary": "This comprehensive setup guide by Hannah Stulberg positions Claude Code as a productivity multiplier for non-technical users, promising to automate tedious work tasks. The article compares Claude Code to having a \"junior employee\" who handles repetitive tasks across work and personal life. It emphasizes that no coding experience is required.\n\nThe guide covers IDE selection (recommending Cursor), working folder structure, markdown file format for AI collaboration, bash commands for system operations, and permission settings. It addresses cost-benefit analysis, framing subscription costs against time savings. The article is valuable for product managers new to CLI tools who want step-by-step instructions for integrating Claude Code into their workflow."
+    },
+    {
+      "title": "Skills Explained",
+      "url": "https://claude.com/blog/skills-explained",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2025-11-13",
+      "last_verified": "2026-02-03",
+      "next_review": "2026-05-03",
+      "confidence": 5,
+      "author": "Anthropic",
+      "source": "claude.com",
+      "summary": "This official Claude.com guide explains how Claude's agentic building blocks work together, comparing Skills, prompts, Projects, subagents, and the Model Context Protocol (MCP). Skills are specialized knowledge modules containing instructions and code that Claude discovers dynamically—ideal for organizational workflows, domain expertise, and personal preferences that need consistent execution across conversations.\n\nThe article helps product managers understand when to use each building block: prompts for one-off requests, Projects for persistent workspaces, subagents for independent AI assistants with specialized configurations, and MCP for external data connections. Key insights include progressive disclosure (Skills load metadata first, full instructions only when needed) and context optimization through strategic tool selection."
+    },
+    {
+      "title": "How to Create Skills: Key Steps, Limitations, and Examples",
+      "url": "https://claude.com/blog/how-to-create-skills-key-steps-limitations-and-examples",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2025-11-19",
+      "last_verified": "2026-02-03",
+      "next_review": "2026-05-03",
+      "confidence": 5,
+      "author": "Anthropic",
+      "source": "claude.com",
+      "summary": "This official Claude.com guide provides a five-step process for building custom skills that extend Claude's capabilities for specific tasks or domains. The steps cover defining core requirements, writing clear names, creating effective descriptions (identified as the most critical component), developing main instructions, and uploading skills across platforms.\n\nThe article recommends creating skills after encountering a task five times and anticipating ten more future uses. Key insights include how Claude evaluates skill descriptions semantically rather than through keyword matching, and how vague descriptions reduce activation accuracy. The guide includes practical templates for document creation, brand guidelines, and frontend design skills, helping PMs encode institutional knowledge and standardize outputs."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "Twitter Thread (meer_aiit)",
+      "url": "https://x.com/meer_aiit/status/2017984668205756551",
+      "date_evaluated": "2026-02-03",
+      "reason": "Content inaccessible; X/Twitter blocked automated fetching"
+    }
+  ]
+}
