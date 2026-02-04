@@ -8,6 +8,7 @@ A curated learning resource library for AI Product Managers. This is the consume
 - **Database**: Supabase (PostgreSQL)
 - **Styling**: Tailwind CSS
 - **Validation**: Zod
+- **Email**: Resend (for submission confirmations)
 
 ## Development
 
@@ -29,6 +30,9 @@ src/
     ├── supabase/       # Database client + types
     ├── constants.ts    # Enums, review schedules
     └── utils.ts        # Helpers (slugify, etc.)
+
+submissions/             # User-submitted resources (dated JSON files, gitignored)
+things_to_come/          # PRDs for post-launch features
 ```
 
 ## Skills
@@ -39,6 +43,19 @@ src/
 
 Resources are added via the `/api/ingest` endpoint. See `.claude/skills/ingest.md` for the daily workflow.
 
+## Launch Plan
+
+See `soft_launch_plan.md` for the full production launch plan covering security, testing, operations, and marketing.
+
+## Post-Launch Roadmap
+
+The `things_to_come/` folder contains PRDs for features planned after soft launch:
+
+- `basic-search.md` - Full-text search across resources using Supabase
+- `affiliate-links.md` - Optional affiliate URLs for monetization
+- `user-accounts.md` - Authentication, bookmarking, and progress tracking
+- `submission-notifications.md` - Owner notifications via GitHub/Slack/Discord
+
 ## Environment Variables
 
 Required in `.env.local`:
@@ -46,3 +63,5 @@ Required in `.env.local`:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `INGEST_API_KEY`
+- `RESEND_API_KEY` - For sending confirmation emails
+- `EMAIL_FROM` - Sender address (e.g., `The Evolving PM <noreply@theevolvingpm.com>`)

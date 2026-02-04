@@ -37,6 +37,9 @@ api-requests.http
 # vercel
 .vercel
 
+# User submissions (contain personal data)
+/submissions/*.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
