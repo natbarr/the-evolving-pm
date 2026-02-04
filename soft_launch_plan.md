@@ -41,13 +41,17 @@ EMAIL_FROM=The Evolving PM <noreply@theevolvingpm.com>
 ### Tasks
 | Task | Priority | Status |
 |------|----------|--------|
-| Restrict CORS to production domain only | Critical | [ ] |
-| Add rate limiting to submit endpoint (5/min per IP) | Critical | [ ] |
+| Restrict CORS to production domain only | Critical | [x] |
+| Add rate limiting to submit endpoint (5/min per IP) | Critical | [x] |
 | Add request body size limits to ingest endpoint | High | [ ] |
 | Rotate and strengthen `INGEST_API_KEY` | High | [ ] |
 | Sanitize resource summaries for XSS | High | [ ] |
 | Add Content Security Policy (CSP) headers | Medium | [ ] |
 | Audit and lock down Supabase RLS policies | Medium | [ ] |
+
+### Implemented via Middleware (`src/middleware.ts`)
+- **CORS**: Only allows requests from `theevolvingpm.com`, `www.theevolvingpm.com`, and `localhost:3000-3002`
+- **Rate Limiting**: 5 requests per minute per IP on `/api/submit`, returns 429 with `Retry-After` header when exceeded
 
 ---
 
