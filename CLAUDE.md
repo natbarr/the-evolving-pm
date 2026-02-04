@@ -13,8 +13,23 @@ A curated learning resource library for AI Product Managers. This is the consume
 ## Development
 
 ```bash
-npm run dev    # Start dev server at localhost:3000
+npm run dev    # Start dev server at localhost:4000
 ```
+
+## Testing
+
+```bash
+npm test           # Vitest watch mode
+npm run test:run   # Vitest single run (42 tests)
+npm run test:e2e   # Playwright E2E tests (21 tests)
+```
+
+**Test structure:**
+- `tests/integration/` - API route tests (Vitest)
+- `tests/e2e/` - Browser tests (Playwright)
+- `tests/mocks/` - Shared test fixtures and mocks
+
+**Note:** E2E tests run serially with a single worker to avoid rate limiting on `/api/submit` (5 req/min).
 
 ## Project Structure
 

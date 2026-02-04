@@ -67,11 +67,13 @@ EMAIL_FROM=The Evolving PM <noreply@theevolvingpm.com>
 
 **Goal:** Establish baseline test coverage for critical paths.
 
+**Status:** IN PROGRESS
+
 ### Minimum Before Launch
-- [ ] Integration tests for `/api/ingest` endpoint (auth, validation, upsert)
-- [ ] Integration tests for `/api/submit` endpoint (validation, email sending)
-- [ ] E2E test for resource browsing flow
-- [ ] E2E test for submit form flow
+- [x] Integration tests for `/api/ingest` endpoint (auth, validation, upsert)
+- [x] Integration tests for `/api/submit` endpoint (validation, email sending)
+- [x] E2E test for resource browsing flow
+- [x] E2E test for submit form flow
 - [ ] Accessibility audit (Lighthouse, axe-core)
 - [ ] Performance audit (Core Web Vitals)
 
@@ -79,6 +81,25 @@ EMAIL_FROM=The Evolving PM <noreply@theevolvingpm.com>
 - **Unit/Integration:** Vitest
 - **E2E:** Playwright
 - **Accessibility:** axe-core, Lighthouse
+
+### Implemented Test Coverage
+
+**Integration Tests (42 tests total):**
+- `/api/ingest`: 22 tests covering authentication, payload validation, formats, upsert logic, error handling
+- `/api/submit`: 18 tests covering validation, JSON file storage, email sending, response format
+- Setup verification: 2 tests
+
+**E2E Tests (21 tests total):**
+- Resource browsing flow: 11 tests (homepage, navigation, categories, resources, empty states)
+- Submit form flow: 7 tests (form rendering, validation, submission, reset)
+- Accessibility basics: 3 tests (labels, keyboard navigation, required fields)
+
+### Test Commands
+```bash
+npm test           # Vitest watch mode
+npm run test:run   # Vitest single run
+npm run test:e2e   # Playwright E2E tests
+```
 
 ---
 
