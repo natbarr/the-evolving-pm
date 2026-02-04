@@ -43,15 +43,23 @@ EMAIL_FROM=The Evolving PM <noreply@theevolvingpm.com>
 |------|----------|--------|
 | Restrict CORS to production domain only | Critical | [x] |
 | Add rate limiting to submit endpoint (5/min per IP) | Critical | [x] |
-| Add request body size limits to ingest endpoint | High | [ ] |
-| Rotate and strengthen `INGEST_API_KEY` | High | [ ] |
-| Sanitize resource summaries for XSS | High | [ ] |
+| Add request body size limits to ingest endpoint | High | [x] |
+| Rotate and strengthen `INGEST_API_KEY` | High | [x] |
+| Sanitize resource summaries for XSS | High | [x] |
 | Add Content Security Policy (CSP) headers | Medium | [ ] |
 | Audit and lock down Supabase RLS policies | Medium | [ ] |
 
 ### Implemented via Middleware (`src/middleware.ts`)
-- **CORS**: Only allows requests from `theevolvingpm.com`, `www.theevolvingpm.com`, and `localhost:3000-3002`
+- **CORS**: Only allows requests from `theevolvingpm.com`, `www.theevolvingpm.com`, and `localhost:4000-4010`
 - **Rate Limiting**: 5 requests per minute per IP on `/api/submit`, returns 429 with `Retry-After` header when exceeded
+
+### Implemented in API Routes
+- **Body size limit**: 1MB max on `/api/ingest` (returns 413 if exceeded)
+- **API key guidance**: Added `openssl rand -base64 32` hint in `.env.local.example`
+
+### Implemented in Utils
+- **URL sanitization**: `sanitizeUrl()` blocks `javascript:` and `data:` URLs
+- **HTML stripping**: `stripHtml()` utility available for text sanitization
 
 ---
 

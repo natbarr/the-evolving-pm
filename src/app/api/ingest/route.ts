@@ -82,7 +82,19 @@ const IngestSchema = z.union([
   }),
 ]);
 
+// Maximum request body size (1MB)
+const MAX_BODY_SIZE = 1 * 1024 * 1024;
+
 export async function POST(request: NextRequest) {
+  // Check content-length header for body size limit
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
+    return NextResponse.json(
+      { error: "Payload Too Large", message: "Request body exceeds 1MB limit" },
+      { status: 413 }
+    );
+  }
+
   const apiKey = request.headers.get("X-API-Key");
   const expectedKey = process.env.INGEST_API_KEY;
 
@@ -94,8 +106,19 @@ export async function POST(request: NextRequest) {
   }
 
   let body: unknown;
+  let bodyText: string;
   try {
-    body = await request.json();
+    bodyText = await request.text();
+
+    // Double-check actual body size
+    if (bodyText.length > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { error: "Payload Too Large", message: "Request body exceeds 1MB limit" },
+        { status: 413 }
+      );
+    }
+
+    body = JSON.parse(bodyText);
   } catch {
     return NextResponse.json(
       { error: "Bad Request", message: "Invalid JSON body" },

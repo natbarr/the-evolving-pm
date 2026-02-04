@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/Badge";
 import { ResourceCard } from "@/components/ResourceCard";
 import { CATEGORIES, LEVELS, FORMATS } from "@/lib/constants";
-import { formatDate, getHostname } from "@/lib/utils";
+import { formatDate, getHostname, sanitizeUrl } from "@/lib/utils";
 import type { Resource } from "@/lib/supabase/types";
 
 type Params = Promise<{ slug: string }>;
@@ -142,7 +142,7 @@ export default async function ResourcePage({
 
           {/* Quick action button */}
           <a
-            href={resource.url}
+            href={sanitizeUrl(resource.url)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 text-white font-medium hover:bg-accent-600 transition-colors"
@@ -251,7 +251,7 @@ export default async function ResourcePage({
             Ready to explore this resource?
           </p>
           <a
-            href={resource.url}
+            href={sanitizeUrl(resource.url)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-primary-900 px-8 py-4 text-white font-medium hover:bg-primary-800 transition-colors"

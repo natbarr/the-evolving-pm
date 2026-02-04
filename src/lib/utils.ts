@@ -47,3 +47,29 @@ export function getHostname(url: string): string {
     return url;
   }
 }
+
+/**
+ * Sanitize a URL to prevent XSS via javascript: or data: URLs
+ * Only allows http: and https: protocols
+ */
+export function sanitizeUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return url;
+    }
+    // Return a safe fallback for non-http(s) URLs
+    return "#";
+  } catch {
+    // Invalid URL
+    return "#";
+  }
+}
+
+/**
+ * Strip HTML tags from text to prevent XSS
+ * Use as a belt-and-suspenders approach even though React escapes by default
+ */
+export function stripHtml(text: string): string {
+  return text.replace(/<[^>]*>/g, "");
+}
