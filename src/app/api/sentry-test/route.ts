@@ -4,14 +4,22 @@ import * as Sentry from "@sentry/nextjs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const client = Sentry.getClient();
+  const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
+
   const error = new Error("Sentry test error from API route");
-  Sentry.captureException(error);
-  await Sentry.flush(2000); // Wait for Sentry to send
+  const eventId = Sentry.captureException(error);
+  await Sentry.flush(5000);
+
   return new Response(
     JSON.stringify({
       message: "Error sent to Sentry",
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN ? "DSN is set" : "DSN is NOT set"
-    }),
+      eventId,
+      dsnSet: !!dsn,
+      dsnPreview: dsn ? dsn.substring(0, 30) + "..." : "not set",
+      clientInitialized: !!client,
+      nodeEnv: process.env.NODE_ENV,
+    }, null, 2),
     { status: 200, headers: { "Content-Type": "application/json" } }
   );
 }
