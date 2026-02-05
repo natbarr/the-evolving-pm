@@ -170,7 +170,67 @@ npm run test:e2e
 
 # Coverage report
 npm run test:run -- --coverage
+
+# Run a specific test file
+npm run test:run -- tests/unit/utils.test.ts
 ```
+
+## When to Run Tests
+
+### Local Development
+
+**While coding** — Run unit tests in watch mode:
+```bash
+npm test
+```
+- Runs on file save
+- Sub-second feedback
+- Catches logic errors immediately
+
+**Before committing** — Run full Vitest suite:
+```bash
+npm run test:run
+```
+- 154 tests in ~1 second
+- Validates all unit + integration tests
+- Fast enough to run every commit
+
+**Before pushing / after significant changes** — Run E2E:
+```bash
+npm run test:e2e
+```
+- 24 tests in ~30 seconds
+- Requires dev server (starts automatically)
+- Validates actual user workflows
+
+### By Scenario
+
+| Scenario | Command |
+|----------|---------|
+| Changed a utility function | `npm test` (watch mode) |
+| Changed an API route | `npm run test:run` |
+| Changed a page/component | `npm run test:e2e` |
+| Before creating a PR | `npm run test:run && npm run test:e2e` |
+| Debugging a specific test | `npm run test:run -- tests/unit/utils.test.ts` |
+
+### CI/CD Pipeline
+
+| Stage | Tests | Trigger | Fail Behavior |
+|-------|-------|---------|---------------|
+| Pre-commit hook | `npm run test:run` | Every commit | Block commit |
+| PR checks | `npm run test:run` | PR opened/updated | Block merge |
+| PR checks | `npm run test:e2e` | PR opened/updated | Block merge |
+| Post-deploy | E2E against staging | After deploy | Alert + rollback |
+
+### Cost/Benefit
+
+| Suite | Time | What It Catches |
+|-------|------|-----------------|
+| Unit | <1s | Logic bugs, security regressions, edge cases |
+| Integration | <1s | API contract violations, validation errors |
+| E2E | ~30s | Broken user flows, UI regressions, browser issues |
+
+The unit tests are cheap enough to run constantly. Reserve E2E for validation checkpoints.
 
 ## Test Data
 
