@@ -120,16 +120,16 @@ npm run test:e2e   # Playwright E2E tests
 
 ### Automation
 - [ ] Automate daily ingest with GitHub Actions (deferred - see `things_to_come/automated-ingest.md`)
-- [ ] Document manual ingest fallback procedure
+- [x] Document manual ingest fallback procedure (see `docs/manual-ingest.md`)
 
 ### Environments
 - [x] Production environment configured
 - [ ] Staging environment with production data snapshot (optional)
 
 ### Documentation
-- [ ] Deployment runbook
-- [ ] Rollback procedure
-- [ ] Incident response basics
+- [x] Deployment runbook (see `docs/deployment.md`)
+- [x] Rollback procedure (see `docs/rollback.md`)
+- [x] Incident response basics (see `docs/incident-response.md`)
 
 ---
 
