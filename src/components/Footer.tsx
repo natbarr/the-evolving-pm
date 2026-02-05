@@ -44,6 +44,26 @@ export function Footer() {
           <p className="text-sm text-primary-500">
             Curated resources for Product Managers navigating AI&apos;s impact on their craft.
           </p>
+          <p className="mt-2 text-sm text-primary-500">
+            Built by{" "}
+            <a
+              href="https://natbarr.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-700 hover:text-primary-900 transition-colors"
+            >
+              Nat
+            </a>
+            {" · "}
+            <a
+              href="https://linkedin.com/in/nat-barr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-700 hover:text-primary-900 transition-colors"
+            >
+              LinkedIn
+            </a>
+          </p>
           <p className="mt-2 text-xs text-primary-400">
             &copy; {new Date().getFullYear()} The Evolving PM. All resources remain property of their original creators.
           </p>

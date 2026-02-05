@@ -134,6 +134,23 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* About the Creator */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-primary-900 mb-6">
+            Who&apos;s Behind This
+          </h2>
+          <div className="bg-primary-50 rounded-xl p-6">
+            <p className="text-lg text-primary-700 leading-relaxed mb-4">
+              Hi, I&apos;m <strong>Nat</strong>—a product builder and leader.
+            </p>
+            <p className="text-primary-700 leading-relaxed">
+              I&apos;m jazzed to see the evolution of product management opening doors
+              for more product builders, and I built The Evolving PM to help others
+              grow on that journey.
+            </p>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="text-center py-8 border-t border-primary-200">
           <h2 className="text-xl font-bold text-primary-900 mb-4">
