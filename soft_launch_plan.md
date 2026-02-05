@@ -119,7 +119,7 @@ npm run test:e2e   # Playwright E2E tests
 - [ ] Configure alerts for API errors
 
 ### Automation
-- [ ] Automate daily ingest with GitHub Actions (cron)
+- [ ] Automate daily ingest with GitHub Actions (deferred - see `things_to_come/automated-ingest.md`)
 - [ ] Document manual ingest fallback procedure
 
 ### Environments
