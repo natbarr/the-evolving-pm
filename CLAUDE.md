@@ -80,3 +80,4 @@ Required in `.env.local`:
 - `INGEST_API_KEY`
 - `RESEND_API_KEY` - For sending confirmation emails
 - `EMAIL_FROM` - Sender address (e.g., `The Evolving PM <noreply@theevolvingpm.com>`)
+- `NEXT_PUBLIC_SENTRY_DSN` - Sentry error tracking DSN (production)

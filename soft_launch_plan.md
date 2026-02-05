@@ -114,7 +114,7 @@ npm run test:e2e   # Playwright E2E tests
 - [ ] Configure preview deployments for PRs
 
 ### Monitoring
-- [ ] Add Sentry for error tracking
+- [x] Add Sentry for error tracking
 - [ ] Set up Vercel Analytics or Plausible for usage insights
 - [ ] Configure alerts for API errors
 
