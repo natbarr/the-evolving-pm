@@ -67,7 +67,7 @@ EMAIL_FROM=The Evolving PM <noreply@theevolvingpm.com>
 
 **Goal:** Establish baseline test coverage for critical paths.
 
-**Status:** IN PROGRESS
+**Status:** MOSTLY COMPLETE (audits optional)
 
 ### Minimum Before Launch
 - [x] Integration tests for `/api/ingest` endpoint (auth, validation, upsert)
@@ -106,6 +106,8 @@ npm run test:e2e   # Playwright E2E tests
 ## Phase 4: Operational Readiness
 
 **Goal:** Set up hosting, monitoring, and automation.
+
+**Status:** MOSTLY COMPLETE (alerts/staging optional)
 
 ### Hosting (Vercel)
 - [x] Create Vercel project
