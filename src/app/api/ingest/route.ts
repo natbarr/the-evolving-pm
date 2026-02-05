@@ -29,6 +29,7 @@ const FormatEnum = z.enum([
   "repository",
   "newsletter",
   "community",
+  "reference",
 ]);
 
 const ContentTypeEnum = z.enum([

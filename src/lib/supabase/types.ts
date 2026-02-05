@@ -21,7 +21,8 @@ export type Format =
   | "tool"
   | "repository"
   | "newsletter"
-  | "community";
+  | "community"
+  | "reference";
 
 export type ContentType =
   | "conceptual"
