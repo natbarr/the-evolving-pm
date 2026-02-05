@@ -108,23 +108,23 @@ npm run test:e2e   # Playwright E2E tests
 **Goal:** Set up hosting, monitoring, and automation.
 
 ### Hosting (Vercel)
-- [ ] Create Vercel project
-- [ ] Configure environment variables (production)
-- [ ] Set up custom domain with SSL
-- [ ] Configure preview deployments for PRs
+- [x] Create Vercel project
+- [x] Configure environment variables (production)
+- [x] Set up custom domain with SSL
+- [x] Configure preview deployments for PRs (enabled by default)
 
 ### Monitoring
 - [x] Add Sentry for error tracking
 - [ ] Set up Vercel Analytics or Plausible for usage insights
-- [ ] Configure alerts for API errors
+- [ ] Configure alerts for API errors (Sentry dashboard)
 
 ### Automation
 - [ ] Automate daily ingest with GitHub Actions (deferred - see `things_to_come/automated-ingest.md`)
 - [ ] Document manual ingest fallback procedure
 
 ### Environments
-- [ ] Production environment configured
-- [ ] Staging environment with production data snapshot (optional but recommended)
+- [x] Production environment configured
+- [ ] Staging environment with production data snapshot (optional)
 
 ### Documentation
 - [ ] Deployment runbook
