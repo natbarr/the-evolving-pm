@@ -78,6 +78,7 @@ export const FORMATS: Record<Format, { name: string; icon: string }> = {
   repository: { name: "Repository", icon: "📦" },
   newsletter: { name: "Newsletter", icon: "📬" },
   community: { name: "Community", icon: "👥" },
+  reference: { name: "Reference", icon: "📋" },
 };
 
 export const CONTENT_TYPE_REVIEW_DAYS: Record<ContentType, number> = {
