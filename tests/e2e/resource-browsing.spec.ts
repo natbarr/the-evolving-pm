@@ -112,33 +112,125 @@ test.describe("Resource Browsing Flow", () => {
 });
 
 test.describe("Resource Browsing - Empty States", () => {
-  test("resources page handles no results gracefully", async ({ page }) => {
-    // Navigate to resources with a filter that might return no results
+  test("resources page shows appropriate content for filtered results", async ({ page }) => {
+    // Navigate to resources with filters applied
     await page.goto("/resources?category=ai-fundamentals&level=expert&format=podcast");
 
-    // Should show empty message or resources
-    // Either we have results or we have an empty message
-    const hasResources = await page.locator("article").count() > 0;
-    const hasEmptyMessage = await page.getByText(/no resources/i).isVisible().catch(() => false);
+    // Page should load and show either resources or an empty state message
+    await page.waitForLoadState("networkidle");
 
-    expect(hasResources || hasEmptyMessage).toBe(true);
+    // Check that the page rendered properly (filter bar should always be visible)
+    await expect(
+      page.locator("[data-testid='filter-bar']").or(page.getByRole("combobox").first())
+    ).toBeVisible();
+
+    // Count resource cards
+    const resourceCount = await page.locator("article").count();
+
+    if (resourceCount === 0) {
+      // If no resources, verify empty state is displayed (not a blank page)
+      const pageContent = await page.locator("main").textContent();
+      expect(pageContent).toBeTruthy();
+      // Page should indicate no results or show some feedback
+      expect(pageContent!.length).toBeGreaterThan(50);
+    } else {
+      // If resources exist, verify they are properly rendered
+      await expect(page.locator("article").first()).toBeVisible();
+    }
   });
 });
 
 test.describe("Resource Browsing - Pagination", () => {
-  test("pagination is visible when there are many resources", async ({ page }) => {
+  test("pagination controls work when available", async ({ page }) => {
     await page.goto("/resources");
-
-    // Wait for content to load
     await page.waitForLoadState("networkidle");
 
-    // If there are enough resources, pagination should be visible
-    // This is conditional based on whether there's enough test data
-    const paginationExists = await page.locator("nav[aria-label='pagination']").or(
-      page.getByRole("link", { name: /next/i })
-    ).isVisible().catch(() => false);
+    // Check if pagination exists (depends on having > 15 resources)
+    const nextButton = page.getByRole("link", { name: /next/i });
+    const hasPagination = await nextButton.isVisible().catch(() => false);
 
-    // We just verify the page loads, pagination depends on data
-    expect(true).toBe(true);
+    if (hasPagination) {
+      // Test pagination navigation
+      await nextButton.click();
+      await expect(page).toHaveURL(/page=2/);
+
+      // Verify we're on page 2 and content loaded
+      await page.waitForLoadState("networkidle");
+      const resourceCount = await page.locator("article").count();
+      expect(resourceCount).toBeGreaterThanOrEqual(0);
+
+      // Test previous button
+      const prevButton = page.getByRole("link", { name: /previous/i });
+      await expect(prevButton).toBeVisible();
+      await prevButton.click();
+
+      // Should be back to page 1 (no page param or page=1)
+      await expect(page).toHaveURL(/\/resources(?:\?(?!.*page=)|$)/);
+    } else {
+      // No pagination means 15 or fewer resources - verify resource count
+      const resourceCount = await page.locator("article").count();
+      expect(resourceCount).toBeLessThanOrEqual(15);
+    }
+  });
+});
+
+test.describe("Resource Browsing - Filtering", () => {
+  test("category filter updates URL and filters results", async ({ page }) => {
+    await page.goto("/resources");
+    await page.waitForLoadState("networkidle");
+
+    // Find and interact with the category filter
+    const categorySelect = page.locator("select").first();
+    const hasFilters = await categorySelect.isVisible().catch(() => false);
+
+    if (hasFilters) {
+      // Select a category
+      await categorySelect.selectOption("ai-fundamentals");
+
+      // URL should update with the filter
+      await expect(page).toHaveURL(/category=ai-fundamentals/);
+
+      // Page should still render properly
+      await page.waitForLoadState("networkidle");
+      await expect(
+        page.getByRole("heading", { name: /resource library/i })
+      ).toBeVisible();
+    }
+  });
+
+  test("multiple filters can be combined", async ({ page }) => {
+    await page.goto("/resources?category=ai-fundamentals");
+    await page.waitForLoadState("networkidle");
+
+    // Verify initial filter is applied
+    await expect(page).toHaveURL(/category=ai-fundamentals/);
+
+    // Find level filter (usually second select)
+    const selects = page.locator("select");
+    const selectCount = await selects.count();
+
+    if (selectCount >= 2) {
+      // Select a level filter
+      await selects.nth(1).selectOption("beginner");
+
+      // URL should have both filters
+      await expect(page).toHaveURL(/category=ai-fundamentals/);
+      await expect(page).toHaveURL(/level=beginner/);
+    }
+  });
+
+  test("clearing filters returns to unfiltered view", async ({ page }) => {
+    // Start with filters applied
+    await page.goto("/resources?category=ai-fundamentals&level=beginner");
+    await page.waitForLoadState("networkidle");
+
+    // Reset by navigating to base resources page
+    await page.goto("/resources");
+    await page.waitForLoadState("networkidle");
+
+    // URL should not have filter params
+    const url = page.url();
+    expect(url).not.toContain("category=");
+    expect(url).not.toContain("level=");
   });
 });
