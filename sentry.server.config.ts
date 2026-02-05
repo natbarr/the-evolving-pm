@@ -6,9 +6,9 @@ Sentry.init({
   // Adjust sample rate in production (1.0 = 100% of errors)
   tracesSampleRate: 1.0,
 
-  // Enable in all environments for now (to debug)
-  enabled: true,
+  // Only enable in production
+  enabled: process.env.NODE_ENV === "production",
 
-  // Enable debug to see what's happening
-  debug: true,
+  // Debug mode off
+  debug: false,
 });
