@@ -115,7 +115,7 @@ npm run test:e2e   # Playwright E2E tests
 
 ### Monitoring
 - [x] Add Sentry for error tracking
-- [ ] Set up Vercel Analytics or Plausible for usage insights
+- [x] Set up Vercel Analytics or Plausible for usage insights
 - [ ] Configure alerts for API errors (Sentry dashboard)
 
 ### Automation
