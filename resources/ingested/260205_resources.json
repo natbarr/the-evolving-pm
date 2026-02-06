@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-05"
+  },
+  "resources": [
+    {
+      "title": "How to Build AI Product Sense",
+      "url": "https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-03",
+      "last_verified": "2026-02-05",
+      "next_review": "2026-05-05",
+      "confidence": 4,
+      "author": "Tal Raviv, Aman Khan",
+      "source": "lennysnewsletter.com",
+      "summary": "This interactive tutorial by Tal Raviv and Aman Khan teaches product managers and non-technical professionals how to develop 'AI product sense' by using AI coding agents like Cursor and Claude Code for daily work tasks. Rather than studying AI concepts abstractly, the authors advocate for hands-on learning through practical applications including strategy, prioritization, decision-making, data analysis, and productivity workflows.\n\nThe article covers essential technical concepts translated for PM audiences: RAG (Retrieval Augmented Generation) for retrieving relevant information, agent memory through persistent instruction files (AGENTS.md), context engineering for strategically filling context windows, tool calling mechanisms, context rot and performance degradation, and model selection tradeoffs. The piece includes $50 in free Cursor credits for subscribers—enough for approximately 2.5 months of standard usage."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "Subagents in Agentic IDEs",
+      "url": "https://www.builder.io/blog/subagents",
+      "date_evaluated": "2026-02-05",
+      "reason": "Developer-focused; no direct PM guidance—technical implementation patterns only"
+    }
+  ]
+}
