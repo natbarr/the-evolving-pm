@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-06"
+  },
+  "resources": [
+    {
+      "title": "From Zero to Claude Code Pro in 90 Minutes",
+      "url": "https://fullstackpm.com/zerotopro",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "course",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-01-01",
+      "last_verified": "2026-02-06",
+      "next_review": "2026-05-06",
+      "confidence": 4,
+      "author": "Carl Vellotti",
+      "source": "fullstackpm.com",
+      "summary": "This hands-on workshop by Carl Vellotti (The Full Stack PM) teaches product managers how to use Claude Code effectively within a 90-minute structured session. Using a fictional scenario of joining Faculty Products as a PM, participants learn to synthesize research, create formatted deliverables, build prototypes, and establish a personal operating system using AI tools.\n\nThe workshop covers essential Claude Code capabilities: file referencing and multi-document synthesis, template-based transformations, slash commands for workflow automation, CLAUDE.md for project memory, MCPs (Model Context Protocol) for tool integration, and Plan Mode for approval-based workflows. The course includes downloadable templates and a structured folder system (\"PM Copilot OS\") that PMs can immediately implement. It emphasizes using Claude as a collaborative partner while keeping humans in decision-making roles."
+    },
+    {
+      "title": "Product Coaching and AI",
+      "url": "https://www.svpg.com/product-coaching-and-ai/",
+      "category": "ai-product-strategy",
+      "level": "beginner",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-02-04",
+      "last_verified": "2026-02-06",
+      "next_review": "2027-02-06",
+      "confidence": 4,
+      "author": "Marty Cagan",
+      "source": "svpg.com",
+      "summary": "This article by Marty Cagan (SVPG founder) advocates for using foundation AI models (Claude, Gemini, GPT) as personal product coaches for aspiring product managers and leaders. Cagan argues that while human coaching remains ideal, AI models configured with appropriate instructions and company context can now provide coaching quality that approaches or matches most managers—with 24/7 availability.\n\nThe piece addresses a critical gap in the product community: many organizations lack managers capable of providing effective product coaching, yet millions of product creators need upskilling. Key recommendations include using AI for developing product sense, learning the product operating model versus project model, and accelerating skill development. Cagan suggests human product leadership coaches should focus on company leaders navigating organizational transformation, while AI coaching serves product creators learning foundational craft."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "Programming with AI, Without the Hype",
+      "url": "https://albertovarela.net/blog/2026/02/programming-with-ai/",
+      "date_evaluated": "2026-02-06",
+      "reason": "Developer-focused; no direct PM guidance—engineering workflow article"
+    }
+  ]
+}
