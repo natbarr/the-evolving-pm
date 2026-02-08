@@ -179,37 +179,55 @@ export default async function ResourcePage({
         </section>
 
         {/* Why This Matters */}
-        <section className="mb-12 bg-primary-50 rounded-xl p-6">
-          <h2 className="text-xl font-semibold text-primary-900 mb-4">
-            Why This Matters
-          </h2>
-          <p className="text-primary-700">
-            {level?.name === "Beginner" && (
-              <>
-                This resource is ideal for PMs just starting their AI journey.
-                It provides foundational knowledge in{" "}
-                <span className="font-medium">{category?.name.toLowerCase()}</span>{" "}
-                that will help you build a solid understanding of how AI impacts
-                product management.
-              </>
-            )}
-            {level?.name === "Intermediate" && (
-              <>
-                Building on foundational concepts, this resource explores{" "}
-                <span className="font-medium">{category?.name.toLowerCase()}</span>{" "}
-                at a deeper level. It&apos;s designed for PMs who have some AI
-                experience and want to develop more sophisticated skills.
-              </>
-            )}
-            {level?.name === "Expert" && (
-              <>
-                This advanced resource dives deep into{" "}
-                <span className="font-medium">{category?.name.toLowerCase()}</span>.
-                It&apos;s best suited for experienced practitioners looking to master
-                complex topics and stay at the cutting edge.
-              </>
-            )}
-          </p>
+        <section className="mb-12">
+          <div className="rounded-xl bg-white shadow-md ring-1 ring-primary-100 p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-100">
+                  <svg className="h-6 w-6 text-accent-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <h2 className="text-xl font-semibold text-primary-900">
+                    Why This Matters
+                  </h2>
+                  <span className="rounded-full bg-primary-100 px-3 py-0.5 text-sm font-medium text-primary-700">
+                    {level?.name}
+                  </span>
+                </div>
+                <p className="text-primary-600 leading-relaxed">
+                  {level?.name === "Beginner" && (
+                    <>
+                      This resource is ideal for PMs just starting their AI journey.
+                      It provides foundational knowledge in{" "}
+                      <span className="font-medium">{category?.name.toLowerCase()}</span>{" "}
+                      that will help you build a solid understanding of how AI impacts
+                      product management.
+                    </>
+                  )}
+                  {level?.name === "Intermediate" && (
+                    <>
+                      Building on foundational concepts, this resource explores{" "}
+                      <span className="font-medium">{category?.name.toLowerCase()}</span>{" "}
+                      at a deeper level. It&apos;s designed for PMs who have some AI
+                      experience and want to develop more sophisticated skills.
+                    </>
+                  )}
+                  {level?.name === "Expert" && (
+                    <>
+                      This advanced resource dives deep into{" "}
+                      <span className="font-medium">{category?.name.toLowerCase()}</span>.
+                      It&apos;s best suited for experienced practitioners looking to master
+                      complex topics and stay at the cutting edge.
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Resource Details */}
