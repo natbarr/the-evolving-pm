@@ -234,3 +234,84 @@ test.describe("Resource Browsing - Filtering", () => {
     expect(url).not.toContain("level=");
   });
 });
+
+test.describe("Resource Detail Page", () => {
+  test("can navigate to resource detail from resources list", async ({ page }) => {
+    await page.goto("/resources");
+    await page.waitForLoadState("networkidle");
+
+    // Click on the first resource card link
+    const firstResourceLink = page.locator("article a").first();
+    const hasResources = await firstResourceLink.isVisible().catch(() => false);
+
+    if (hasResources) {
+      await firstResourceLink.click();
+
+      // Should be on a resource detail page
+      await expect(page).toHaveURL(/\/resources\/.+/);
+    }
+  });
+
+  test("resource detail page shows all key sections", async ({ page }) => {
+    await page.goto("/resources");
+    await page.waitForLoadState("networkidle");
+
+    // Navigate to first resource
+    const firstResourceLink = page.locator("article a").first();
+    const hasResources = await firstResourceLink.isVisible().catch(() => false);
+
+    if (!hasResources) {
+      test.skip();
+      return;
+    }
+
+    await firstResourceLink.click();
+    await page.waitForLoadState("networkidle");
+
+    // Verify breadcrumb navigation exists
+    await expect(page.getByRole("navigation")).toBeVisible();
+
+    // Verify resource title (h1)
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+    // Verify "View Resource" button exists
+    await expect(page.getByRole("link", { name: /view resource/i })).toBeVisible();
+
+    // Verify Summary section
+    await expect(page.getByRole("heading", { name: /summary/i })).toBeVisible();
+
+    // Verify "Why This Matters" section
+    await expect(page.getByRole("heading", { name: /why this matters/i })).toBeVisible();
+
+    // Verify Details section
+    await expect(page.getByRole("heading", { name: /details/i })).toBeVisible();
+  });
+
+  test("resource detail page shows all detail items including Added date", async ({ page }) => {
+    await page.goto("/resources");
+    await page.waitForLoadState("networkidle");
+
+    // Navigate to first resource
+    const firstResourceLink = page.locator("article a").first();
+    const hasResources = await firstResourceLink.isVisible().catch(() => false);
+
+    if (!hasResources) {
+      test.skip();
+      return;
+    }
+
+    await firstResourceLink.click();
+    await page.waitForLoadState("networkidle");
+
+    // Verify all detail items are present
+    const detailsSection = page.locator("dl");
+    await expect(detailsSection).toBeVisible();
+
+    // Check for each detail label
+    await expect(detailsSection.getByText("Format")).toBeVisible();
+    await expect(detailsSection.getByText("Level")).toBeVisible();
+    await expect(detailsSection.getByText("Access")).toBeVisible();
+    await expect(detailsSection.getByText("Source")).toBeVisible();
+    await expect(detailsSection.getByText("Added")).toBeVisible();
+  });
+});

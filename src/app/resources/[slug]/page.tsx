@@ -235,7 +235,7 @@ export default async function ResourcePage({
           <h2 className="text-xl font-semibold text-primary-900 mb-4">
             Details
           </h2>
-          <dl className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <dl className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div className="bg-white rounded-lg border border-primary-200 p-4">
               <dt className="text-sm text-primary-500 mb-1">Format</dt>
               <dd className="font-medium text-primary-900">
@@ -258,6 +258,12 @@ export default async function ResourcePage({
               <dt className="text-sm text-primary-500 mb-1">Source</dt>
               <dd className="font-medium text-primary-900 truncate">
                 {resource.source || getHostname(resource.url)}
+              </dd>
+            </div>
+            <div className="bg-white rounded-lg border border-primary-200 p-4">
+              <dt className="text-sm text-primary-500 mb-1">Added</dt>
+              <dd className="font-medium text-primary-900">
+                {formatDate(resource.created_at)}
               </dd>
             </div>
           </dl>
