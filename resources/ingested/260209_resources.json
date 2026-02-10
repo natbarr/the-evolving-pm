@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-09"
+  },
+  "resources": [
+    {
+      "title": "Master N8N Workflow Automation (Pawel Huryn Podcast)",
+      "url": "https://www.news.aakashg.com/p/pawel-huryn-podcast2",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "podcast",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "paid",
+      "access_notes": "Subscription required; 7-day free trial available",
+      "publication_date": "2026-01-06",
+      "last_verified": "2026-02-09",
+      "next_review": "2026-05-09",
+      "confidence": 4,
+      "author": "Pawel Huryn",
+      "source": "news.aakashg.com",
+      "summary": "This podcast episode features Pawel Huryn discussing n8n, a workflow automation platform positioned as essential for product managers building AI-powered workflows. Hosted by Aakash Gupta, this is Huryn's second appearance on the show, with his first episode generating over 52K views—indicating strong PM interest in automation tooling.\n\nThe episode covers practical n8n implementation: why to use the platform, step-by-step workflow building, converting workflows into AI agents, optimization best practices, multi-agent system design, and strategies for maximizing the free tier. For product managers, n8n represents a low-code approach to building AI automations and agent systems without deep engineering expertise."
+    }
+  ],
+  "rejected": []
+}
