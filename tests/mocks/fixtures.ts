@@ -42,6 +42,13 @@ export const validSubmission = {
   context: "This is a great resource about AI product management",
 };
 
+// Valid submission with non-test domains (for email sending tests)
+export const validSubmissionRealDomains = {
+  url: "https://realsite.com/suggested-resource",
+  email: "user@realuser.com",
+  context: "This is a great resource about AI product management",
+};
+
 // Valid submission without email
 export const validSubmissionNoEmail = {
   url: "https://example.com/suggested-resource",

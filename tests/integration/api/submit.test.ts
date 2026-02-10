@@ -5,6 +5,7 @@ import path from "path";
 import {
   validSubmission,
   validSubmissionNoEmail,
+  validSubmissionRealDomains,
   invalidSubmissionBadUrl,
   invalidSubmissionBadEmail,
 } from "../../mocks/fixtures";
@@ -198,27 +199,34 @@ describe("/api/submit", () => {
 
   describe("Email Sending", () => {
     it("sends confirmation email when email is provided", async () => {
-      const request = createRequest(validSubmission);
+      const request = createRequest(validSubmissionRealDomains);
       await POST(request);
 
       expect(mockSend).toHaveBeenCalledTimes(1);
       expect(mockSend).toHaveBeenCalledWith(
         expect.objectContaining({
-          to: validSubmission.email,
+          to: validSubmissionRealDomains.email,
           subject: "We received your resource submission",
         })
       );
     });
 
     it("includes submitted URL in email body", async () => {
-      const request = createRequest(validSubmission);
+      const request = createRequest(validSubmissionRealDomains);
       await POST(request);
 
       expect(mockSend).toHaveBeenCalledWith(
         expect.objectContaining({
-          html: expect.stringContaining(validSubmission.url),
+          html: expect.stringContaining(validSubmissionRealDomains.url),
         })
       );
+    });
+
+    it("skips email for test domains (example.com)", async () => {
+      const request = createRequest(validSubmission);
+      await POST(request);
+
+      expect(mockSend).not.toHaveBeenCalled();
     });
 
     it("does not send email when no email provided", async () => {
@@ -241,7 +249,7 @@ describe("/api/submit", () => {
     it("succeeds even if email sending fails", async () => {
       mockSend.mockRejectedValueOnce(new Error("Email service down"));
 
-      const request = createRequest(validSubmission);
+      const request = createRequest(validSubmissionRealDomains);
       const response = await POST(request);
       const data = await response.json();
 
@@ -251,7 +259,7 @@ describe("/api/submit", () => {
     });
 
     it("uses configured FROM address", async () => {
-      const request = createRequest(validSubmission);
+      const request = createRequest(validSubmissionRealDomains);
       await POST(request);
 
       expect(mockSend).toHaveBeenCalledWith(

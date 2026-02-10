@@ -42,7 +42,23 @@ async function appendToJsonFile(submission: Submission): Promise<void> {
   await fs.writeFile(filePath, JSON.stringify(submissions, null, 2), "utf-8");
 }
 
+function isTestDomain(urlOrEmail: string): boolean {
+  try {
+    const host = urlOrEmail.includes("@")
+      ? urlOrEmail.split("@")[1]
+      : new URL(urlOrEmail).hostname;
+    return host === "example.com" || host.endsWith(".example.com");
+  } catch {
+    return false;
+  }
+}
+
 async function sendConfirmationEmail(email: string, url: string): Promise<void> {
+  // Skip sending emails to test domains (RFC 2606 reserved)
+  if (isTestDomain(email) || isTestDomain(url)) {
+    return;
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error("RESEND_API_KEY not configured");
