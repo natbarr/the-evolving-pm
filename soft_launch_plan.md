@@ -184,7 +184,7 @@ npm run test:e2e   # Playwright E2E tests
 - [ ] Submit page copy reviewed
 
 ### Legal
-- [ ] Privacy policy page (for email collection)
+- [x] Privacy policy page (for email collection)
 - [ ] Affiliate disclosure text in footer (for future use)
 
 ---
