@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-10"
+  },
+  "resources": [
+    {
+      "title": "How Carl Set Up His Personal OS in Claude Code",
+      "url": "https://amankhan1.substack.com/p/how-carl-set-up-his-personal-os-in",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-10",
+      "last_verified": "2026-02-10",
+      "next_review": "2026-05-10",
+      "confidence": 4,
+      "author": "Carl Vellotti",
+      "source": "amankhan1.substack.com",
+      "summary": "A practical guide to organizing Claude Code as a personal operating system for PM productivity. Presents a battle-tested folder structure combining Aman Khan's PersonalOS framework with Carl's modifications, covering CLAUDE.md, GOALS.md, task management (backlog/active/archive), projects, workflows, meetings, knowledge, templates, skills, and tools directories. Includes a realistic PM walkthrough demonstrating how consistent file maintenance eliminates repeated context-setting across AI sessions."
+    },
+    {
+      "title": "Agent Skills, Rules, Subagents: Explained!",
+      "url": "https://www.youtube.com/watch?v=L_p5GxGSB_I",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "video",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-01-01",
+      "last_verified": "2026-02-10",
+      "next_review": "2027-02-10",
+      "confidence": 4,
+      "author": "Lee Robinson",
+      "source": "youtube.com",
+      "summary": "A ~7-minute video tracing the evolution of coding agent concepts from simple rules files to the modern skills ecosystem. Explains how static context (rules) and dynamic context (skills) form the two fundamental building blocks, covering the progression through rules, commands, MCP servers, sub-agents, modes, hooks, and skills. Provides conceptual clarity for navigating the increasingly complex coding agent landscape, with practical examples from Cursor including lazy-loading MCP tools and progressive disclosure patterns."
+    }
+  ],
+  "rejected": []
+}
