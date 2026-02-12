@@ -32,7 +32,7 @@ export default function PrivacyPage() {
                 </h3>
                 <p className="text-primary-700">
                   When you{" "}
-                  <Link href="/submit" className="text-accent-600 hover:text-accent-700">
+                  <Link href="/submit" className="text-accent-700 hover:text-accent-800 underline">
                     submit a resource
                   </Link>
                   , we collect:
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
                     href="https://vercel.com/analytics"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent-600 hover:text-accent-700"
+                    className="text-accent-700 hover:text-accent-800 underline"
                   >
                     Vercel Analytics
                   </a>{" "}
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
                     href="https://sentry.io"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent-600 hover:text-accent-700"
+                    className="text-accent-700 hover:text-accent-800 underline"
                   >
                     Sentry
                   </a>{" "}
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                   href="https://vercel.com/legal/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-600 hover:text-accent-700"
+                  className="text-accent-700 hover:text-accent-800 underline"
                 >
                   Vercel
                 </a>{" "}
@@ -140,7 +140,7 @@ export default function PrivacyPage() {
                   href="https://supabase.com/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-600 hover:text-accent-700"
+                  className="text-accent-700 hover:text-accent-800 underline"
                 >
                   Supabase
                 </a>{" "}
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
                   href="https://resend.com/legal/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-600 hover:text-accent-700"
+                  className="text-accent-700 hover:text-accent-800 underline"
                 >
                   Resend
                 </a>{" "}
@@ -162,7 +162,7 @@ export default function PrivacyPage() {
                   href="https://sentry.io/privacy/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-600 hover:text-accent-700"
+                  className="text-accent-700 hover:text-accent-800 underline"
                 >
                   Sentry
                 </a>{" "}
@@ -207,7 +207,7 @@ export default function PrivacyPage() {
                 href="https://linkedin.com/in/nat-barr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent-600 hover:text-accent-700"
+                className="text-accent-700 hover:text-accent-800 underline"
               >
                 LinkedIn
               </a>

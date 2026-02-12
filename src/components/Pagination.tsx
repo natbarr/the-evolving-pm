@@ -61,7 +61,7 @@ export function Pagination({
       <Link
         href={createPageUrl(currentPage - 1)}
         className={cn(
-          "inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
           currentPage === 1
             ? "pointer-events-none text-primary-300"
             : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"
@@ -98,7 +98,7 @@ export function Pagination({
               key={page}
               href={createPageUrl(page)}
               className={cn(
-                "inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors min-w-[40px]",
+                "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
                 page === currentPage
                   ? "bg-primary-900 text-white"
                   : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"
@@ -114,7 +114,7 @@ export function Pagination({
       <Link
         href={createPageUrl(currentPage + 1)}
         className={cn(
-          "inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
           currentPage === totalPages
             ? "pointer-events-none text-primary-300"
             : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"

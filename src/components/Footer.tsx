@@ -8,38 +8,38 @@ export function Footer() {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
             <Link
               href="/"
-              className="text-lg font-semibold text-primary-900"
+              className="text-lg font-semibold text-primary-900 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
             >
               The Evolving PM
             </Link>
-            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
               <Link
                 href="/resources"
-                className="text-primary-600 hover:text-primary-900 transition-colors"
+                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               >
                 Resources
               </Link>
               <Link
                 href="/categories"
-                className="text-primary-600 hover:text-primary-900 transition-colors"
+                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               >
                 Categories
               </Link>
               <Link
                 href="/submit"
-                className="text-primary-600 hover:text-primary-900 transition-colors"
+                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               >
                 Submit a Resource
               </Link>
               <Link
                 href="/about"
-                className="text-primary-600 hover:text-primary-900 transition-colors"
+                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               >
                 About
               </Link>
               <Link
                 href="/privacy"
-                className="text-primary-600 hover:text-primary-900 transition-colors"
+                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               >
                 Privacy
               </Link>
@@ -56,7 +56,7 @@ export function Footer() {
               href="https://natbarr.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700 hover:text-primary-900 transition-colors"
+              className="text-primary-700 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
             >
               Nat
             </a>
@@ -65,12 +65,12 @@ export function Footer() {
               href="https://linkedin.com/in/nat-barr"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700 hover:text-primary-900 transition-colors"
+              className="text-primary-700 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
             >
               LinkedIn
             </a>
           </p>
-          <p className="mt-2 text-xs text-primary-400">
+          <p className="mt-2 text-xs text-primary-500">
             &copy; {new Date().getFullYear()} The Evolving PM. All resources remain property of their original creators.
           </p>
         </div>

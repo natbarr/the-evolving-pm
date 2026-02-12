@@ -2,16 +2,120 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+
+interface FieldState {
+  value: string;
+  touched: boolean;
+  error: string | null;
+}
+
+function validateUrl(value: string): string | null {
+  if (!value) return "URL is required";
+  try {
+    new URL(value);
+    return null;
+  } catch {
+    return "Please enter a valid URL";
+  }
+}
+
+function validateEmail(value: string): string | null {
+  if (!value) return null; // Optional field
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(value) ? null : "Please enter a valid email";
+}
+
+function validateContext(value: string): string | null {
+  if (value.length > 1000) return "Context must be 1000 characters or less";
+  return null;
+}
 
 export default function SubmitPage() {
-  const [url, setUrl] = useState("");
-  const [email, setEmail] = useState("");
-  const [context, setContext] = useState("");
+  const [fields, setFields] = useState<{
+    url: FieldState;
+    email: FieldState;
+    context: FieldState;
+  }>({
+    url: { value: "", touched: false, error: null },
+    email: { value: "", touched: false, error: null },
+    context: { value: "", touched: false, error: null },
+  });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const handleChange = (field: "url" | "email" | "context", value: string) => {
+    setFields((prev) => ({
+      ...prev,
+      [field]: {
+        value,
+        touched: prev[field].touched,
+        // For context, validate on change; for others, clear error on change
+        error: field === "context" ? validateContext(value) : null,
+      },
+    }));
+  };
+
+  const handleBlur = (field: "url" | "email") => {
+    const value = fields[field].value;
+    const error = field === "url" ? validateUrl(value) : validateEmail(value);
+    setFields((prev) => ({
+      ...prev,
+      [field]: {
+        ...prev[field],
+        touched: true,
+        error,
+      },
+    }));
+  };
+
+  const handleContextBlur = () => {
+    setFields((prev) => ({
+      ...prev,
+      context: {
+        ...prev.context,
+        touched: true,
+      },
+    }));
+  };
+
+  const isFieldValid = (field: FieldState, validator?: (v: string) => string | null): boolean => {
+    if (!field.touched) return false;
+    if (field.error) return false;
+    if (validator && validator(field.value)) return false;
+    return field.value.length > 0;
+  };
+
+  const getInputClasses = (field: FieldState, validator?: (v: string) => string | null) => {
+    const baseClasses =
+      "w-full rounded-lg border px-4 py-3 text-primary-900 placeholder:text-primary-400 focus:outline-none focus:ring-1";
+
+    if (field.touched && field.error) {
+      return cn(baseClasses, "border-red-300 focus:border-red-500 focus:ring-red-500");
+    }
+    if (isFieldValid(field, validator)) {
+      return cn(baseClasses, "border-green-300 focus:border-green-500 focus:ring-green-500");
+    }
+    return cn(baseClasses, "border-primary-200 focus:border-accent-500 focus:ring-accent-500");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate all fields before submit
+    const urlError = validateUrl(fields.url.value);
+    const emailError = validateEmail(fields.email.value);
+    const contextError = validateContext(fields.context.value);
+
+    if (urlError || emailError || contextError) {
+      setFields({
+        url: { ...fields.url, touched: true, error: urlError },
+        email: { ...fields.email, touched: true, error: emailError },
+        context: { ...fields.context, touched: true, error: contextError },
+      });
+      return;
+    }
+
     setStatus("submitting");
     setErrorMessage("");
 
@@ -22,9 +126,9 @@ export default function SubmitPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          url,
-          email: email || undefined,
-          context: context || undefined,
+          url: fields.url.value,
+          email: fields.email.value || undefined,
+          context: fields.context.value || undefined,
         }),
       });
 
@@ -35,9 +139,11 @@ export default function SubmitPage() {
       }
 
       setStatus("success");
-      setUrl("");
-      setEmail("");
-      setContext("");
+      setFields({
+        url: { value: "", touched: false, error: null },
+        email: { value: "", touched: false, error: null },
+        context: { value: "", touched: false, error: null },
+      });
     } catch (error) {
       setStatus("error");
       setErrorMessage(
@@ -46,8 +152,14 @@ export default function SubmitPage() {
     }
   };
 
-  const inputClasses =
-    "w-full rounded-lg border border-primary-200 px-4 py-3 text-primary-900 placeholder:text-primary-400 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500";
+  const resetForm = () => {
+    setStatus("idle");
+    setFields({
+      url: { value: "", touched: false, error: null },
+      email: { value: "", touched: false, error: null },
+      context: { value: "", touched: false, error: null },
+    });
+  };
 
   return (
     <div className="py-12">
@@ -64,7 +176,7 @@ export default function SubmitPage() {
         </div>
 
         {status === "success" ? (
-          <div className="text-center py-12 bg-green-50 rounded-xl">
+          <div className="text-center py-12 bg-green-50 rounded-xl" role="status" aria-live="polite">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
               <svg
                 className="h-6 w-6 text-green-600"
@@ -72,6 +184,7 @@ export default function SubmitPage() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -87,12 +200,12 @@ export default function SubmitPage() {
               Your submission has been received. We&apos;ll review it and add it to
               the library if it&apos;s a good fit.
             </p>
-            <Button onClick={() => setStatus("idle")} variant="outline">
+            <Button onClick={resetForm} variant="outline">
               Submit Another
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             <div>
               <label
                 htmlFor="url"
@@ -106,10 +219,18 @@ export default function SubmitPage() {
                 name="url"
                 required
                 placeholder="https://example.com/article"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                className={inputClasses}
+                value={fields.url.value}
+                onChange={(e) => handleChange("url", e.target.value)}
+                onBlur={() => handleBlur("url")}
+                className={getInputClasses(fields.url, validateUrl)}
+                aria-invalid={fields.url.touched && !!fields.url.error}
+                aria-describedby={fields.url.error ? "url-error" : undefined}
               />
+              {fields.url.touched && fields.url.error && (
+                <p id="url-error" className="mt-1 text-sm text-red-600" role="alert">
+                  {fields.url.error}
+                </p>
+              )}
             </div>
 
             <div>
@@ -118,20 +239,29 @@ export default function SubmitPage() {
                 className="block text-sm font-medium text-primary-700 mb-2"
               >
                 Your Email{" "}
-                <span className="text-primary-400 font-normal">(optional)</span>
+                <span className="text-primary-500 font-normal">(optional)</span>
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={inputClasses}
+                value={fields.email.value}
+                onChange={(e) => handleChange("email", e.target.value)}
+                onBlur={() => handleBlur("email")}
+                className={getInputClasses(fields.email, validateEmail)}
+                aria-invalid={fields.email.touched && !!fields.email.error}
+                aria-describedby={fields.email.error ? "email-error" : "email-hint"}
               />
-              <p className="mt-1 text-sm text-primary-500">
-                We&apos;ll only use this to notify you if your resource is added.
-              </p>
+              {fields.email.touched && fields.email.error ? (
+                <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+                  {fields.email.error}
+                </p>
+              ) : (
+                <p id="email-hint" className="mt-1 text-sm text-primary-500">
+                  We&apos;ll only use this to notify you if your resource is added.
+                </p>
+              )}
             </div>
 
             <div>
@@ -140,25 +270,40 @@ export default function SubmitPage() {
                 className="block text-sm font-medium text-primary-700 mb-2"
               >
                 Why is this resource valuable?{" "}
-                <span className="text-primary-400 font-normal">(optional)</span>
+                <span className="text-primary-500 font-normal">(optional)</span>
               </label>
               <textarea
                 id="context"
                 name="context"
                 rows={4}
                 placeholder="Tell us why you found this resource helpful..."
-                value={context}
-                onChange={(e) => setContext(e.target.value)}
-                className={inputClasses}
-                maxLength={1000}
+                value={fields.context.value}
+                onChange={(e) => handleChange("context", e.target.value)}
+                onBlur={handleContextBlur}
+                className={getInputClasses(fields.context, validateContext)}
+                aria-invalid={fields.context.touched && !!fields.context.error}
+                aria-describedby="context-counter"
               />
-              <p className="mt-1 text-sm text-primary-500">
-                {context.length}/1000 characters
+              <p
+                id="context-counter"
+                className={cn(
+                  "mt-1 text-sm",
+                  fields.context.value.length > 1000
+                    ? "text-red-600"
+                    : fields.context.value.length > 900
+                    ? "text-amber-600"
+                    : "text-primary-500"
+                )}
+              >
+                {fields.context.value.length}/1000 characters
+                {fields.context.value.length > 900 && fields.context.value.length <= 1000 && (
+                  <span> - approaching limit</span>
+                )}
               </p>
             </div>
 
             {status === "error" && (
-              <div className="rounded-lg bg-red-50 p-4">
+              <div className="rounded-lg bg-red-50 p-4" role="alert" aria-live="assertive">
                 <p className="text-sm text-red-700">{errorMessage}</p>
               </div>
             )}
@@ -186,6 +331,7 @@ export default function SubmitPage() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -205,6 +351,7 @@ export default function SubmitPage() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -224,6 +371,7 @@ export default function SubmitPage() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"

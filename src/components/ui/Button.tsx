@@ -16,7 +16,7 @@ const variants = {
   primary:
     "bg-primary-900 text-white hover:bg-primary-800 focus-visible:ring-primary-500",
   secondary:
-    "bg-accent-500 text-white hover:bg-accent-600 focus-visible:ring-accent-500",
+    "bg-accent-700 text-white hover:bg-accent-800 focus-visible:ring-accent-500",
   outline:
     "border border-primary-300 text-primary-700 hover:bg-primary-50 focus-visible:ring-primary-500",
 };

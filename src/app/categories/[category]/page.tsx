@@ -4,8 +4,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { ResourceGrid } from "@/components/ResourceGrid";
+import { EmptyState } from "@/components/EmptyState";
 import { Pagination } from "@/components/Pagination";
 import { FilterBar } from "@/components/FilterBar";
+import { ResourceCardSkeleton, FilterBarSkeleton } from "@/components/skeletons";
 import { CATEGORIES, ITEMS_PER_PAGE } from "@/lib/constants";
 import type { Category, Level, Format } from "@/lib/supabase/types";
 
@@ -90,11 +92,29 @@ async function CategoryContent({
   if (format) searchParamsObj.format = format;
   if (sort && sort !== "recent") searchParamsObj.sort = sort;
 
+  const hasFilters = level || format;
+
   return (
     <>
       <ResourceGrid
         resources={resources || []}
-        emptyMessage="No resources in this category yet. Check back soon!"
+        emptyState={
+          hasFilters ? (
+            <EmptyState
+              icon="filter"
+              title="No matching resources"
+              description="Try adjusting your filters to see more resources in this category."
+              action={{ label: "Clear filters", href: `/categories/${categorySlug}` }}
+            />
+          ) : (
+            <EmptyState
+              icon="folder"
+              title="No resources yet"
+              description="This category is waiting for content. Check back soon or suggest a resource!"
+              action={{ label: "Submit a resource", href: "/submit" }}
+            />
+          )
+        }
       />
       {totalPages > 1 && (
         <div className="mt-12">
@@ -150,7 +170,7 @@ export default async function CategoryPage({
         </div>
 
         <div className="mb-8">
-          <Suspense fallback={<div className="h-10" />}>
+          <Suspense fallback={<FilterBarSkeleton filterCount={3} />}>
             <FilterBar
               basePath={`/categories/${categorySlug}`}
               showCategory={false}
@@ -165,10 +185,7 @@ export default async function CategoryPage({
           fallback={
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-64 rounded-xl bg-primary-100 animate-pulse"
-                />
+                <ResourceCardSkeleton key={i} />
               ))}
             </div>
           }

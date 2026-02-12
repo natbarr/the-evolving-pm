@@ -15,8 +15,11 @@ export function ResourceCard({ resource }: ResourceCardProps) {
   const format = FORMATS[resource.format];
 
   return (
-    <Link href={`/resources/${resource.slug}`} className="group block h-full">
-      <Card className="h-full flex flex-col group-hover:border-accent-300 transition-colors">
+    <Link
+      href={`/resources/${resource.slug}`}
+      className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+    >
+      <Card className="h-full flex flex-col group-hover:border-accent-300 group-focus-visible:border-accent-300 transition-colors">
         <CardHeader className="flex-1">
           <div className="flex flex-wrap gap-2 mb-3">
             <Badge variant="category">{category?.name || resource.category}</Badge>

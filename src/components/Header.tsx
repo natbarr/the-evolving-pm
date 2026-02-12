@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navigation = [
   { name: "Resources", href: "/resources" },
@@ -16,12 +16,26 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileMenuOpen]);
+
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-primary-200">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2">
+            <Link
+              href="/"
+              className="flex items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+            >
               <span className="text-xl font-semibold text-primary-900">
                 The Evolving PM
               </span>
@@ -35,7 +49,7 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary-900",
+                  "text-sm font-medium transition-colors hover:text-primary-900 rounded-lg px-2 py-1 -mx-2 -my-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
                   pathname === item.href || pathname.startsWith(item.href + "/")
                     ? "text-primary-900"
                     : "text-primary-500"
@@ -50,7 +64,7 @@ export function Header() {
           <div className="flex md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-primary-500 hover:bg-primary-100 hover:text-primary-900"
+              className="inline-flex items-center justify-center rounded-md p-2.5 text-primary-500 hover:bg-primary-100 hover:text-primary-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
             >
@@ -88,16 +102,25 @@ export function Header() {
           </div>
         </div>
 
+        {/* Mobile menu backdrop */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 top-16 bg-black/20 md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden">
+          <div className="relative md:hidden bg-background border-t border-primary-100">
             <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "block rounded-md px-3 py-2 text-base font-medium",
+                    "block rounded-md px-3 py-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500",
                     pathname === item.href || pathname.startsWith(item.href + "/")
                       ? "bg-primary-100 text-primary-900"
                       : "text-primary-500 hover:bg-primary-50 hover:text-primary-900"

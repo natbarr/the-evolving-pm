@@ -2,8 +2,10 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { ResourceGrid } from "@/components/ResourceGrid";
+import { EmptyState } from "@/components/EmptyState";
 import { Pagination } from "@/components/Pagination";
 import { FilterBar } from "@/components/FilterBar";
+import { ResourceCardSkeleton, FilterBarSkeleton } from "@/components/skeletons";
 import { ITEMS_PER_PAGE, SITE_CONFIG } from "@/lib/constants";
 import type { Category, Level, Format } from "@/lib/supabase/types";
 
@@ -73,11 +75,29 @@ async function ResourcesContent({ searchParams }: { searchParams: SearchParams }
   if (format) searchParamsObj.format = format;
   if (sort && sort !== "recent") searchParamsObj.sort = sort;
 
+  const hasFilters = category || level || format;
+
   return (
     <>
       <ResourceGrid
         resources={resources || []}
-        emptyMessage="No resources match your filters. Try adjusting your criteria."
+        emptyState={
+          hasFilters ? (
+            <EmptyState
+              icon="filter"
+              title="No matching resources"
+              description="Try adjusting your filters or browse all resources."
+              action={{ label: "Clear filters", href: "/resources" }}
+            />
+          ) : (
+            <EmptyState
+              icon="inbox"
+              title="No resources yet"
+              description="We're building our library. Check back soon or suggest a resource!"
+              action={{ label: "Submit a resource", href: "/submit" }}
+            />
+          )
+        }
       />
       {totalPages > 1 && (
         <div className="mt-12">
@@ -111,7 +131,7 @@ export default async function ResourcesPage({
         </div>
 
         <div className="mb-8">
-          <Suspense fallback={<div className="h-10" />}>
+          <Suspense fallback={<FilterBarSkeleton filterCount={4} />}>
             <FilterBar
               basePath="/resources"
               showCategory
@@ -126,10 +146,7 @@ export default async function ResourcesPage({
           fallback={
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-64 rounded-xl bg-primary-100 animate-pulse"
-                />
+                <ResourceCardSkeleton key={i} />
               ))}
             </div>
           }
