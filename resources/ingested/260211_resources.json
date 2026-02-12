@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-11"
+  },
+  "resources": [
+    {
+      "title": "Give Me 20 Minutes, I'll Make You AI Native",
+      "url": "https://www.youtube.com/watch?v=vCwTc39Otm8",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-09",
+      "last_verified": "2026-02-11",
+      "next_review": "2026-05-11",
+      "confidence": 4,
+      "author": "Peter Yang",
+      "source": "youtube.com",
+      "summary": "This YouTube video by Peter Yang presents a practical five-level framework for product managers to become 'AI native.' The levels progress from basic AI usage (replacing Google search with ChatGPT) through daily work integration (voice dictation, meeting notes, AI projects), prototyping (using Replit and Google AI Studio to iterate faster than specs or designs), building apps (vibe coding with tools like Replit, Cursor, and Claude Code), and ultimately establishing personal AI agent systems that autonomously handle tasks across work and life.\n\nYang emphasizes that prototyping fundamentally changes how PMs work—code is now easier to create than documents, slide decks, or designs, flipping the traditional waterfall process. The video includes live demonstrations of prototyping in Replit, showcases several apps Yang built, and profiles three practitioners at 'level five': Kieran's compound engineering system for Claude Code, Teresa Torres' Claude Code + Obsidian workflow, and Nat Elias' autonomous business-building agent. The practical, no-hype approach makes this accessible to PMs with zero technical background."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "PMKit",
+      "url": "https://github.com/yangro/pmkit",
+      "date_evaluated": "2026-02-11",
+      "reason": "Tool/template repository, not a learning resource; contains pre-built Claude skills, not educational content"
+    }
+  ]
+}
