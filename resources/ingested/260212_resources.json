@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-12"
+  },
+  "resources": [
+    {
+      "title": "My Claude Code Workflow for 2026",
+      "url": "https://www.youtube.com/watch?v=sy65ARFI9Bg",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-01-20",
+      "last_verified": "2026-02-12",
+      "next_review": "2026-05-12",
+      "confidence": 4,
+      "author": "Ray Amjad",
+      "source": "youtube.com",
+      "summary": "This video by Ray Amjad walks through his complete AI agent coding workflow for 2026, covering the full cycle from spec creation to implementation. The spec workflow begins with screen recordings of existing products fed into Gemini 3 Pro to generate an initial PRD, then iterates using Claude Code's ask-user-question tool, and uses ChatGPT to discover relevant packages and libraries before breaking the spec into phased milestones. Amjad frames the builder's role as designing feedback loops—monitoring agents, improving CLAUDE.md files, and making high-level architectural decisions the agent cannot.\n\nThe video provides a practical multi-model strategy: Opus 4.5 as the primary model (70-80% of usage) for large features and clean code, Sonnet 4.5 for small fixes and code review, GPT 5.2 for architecture planning and stubborn debugging, Gemini 3 Pro for design tasks, and Haiku 4.5 for quick explanations. Key workflow patterns include using planning mode for any change over 10-15 lines to prevent architectural drift, leveraging sub-agents for research and context gathering (rather than role-based editing), running parallel CLI sessions across projects, and forking sessions to ask questions without polluting the main context."
+    }
+  ],
+  "rejected": []
+}

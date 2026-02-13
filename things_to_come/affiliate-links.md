@@ -72,6 +72,11 @@ Add optional `affiliate_url` to the Zod schema in `/api/ingest/route.ts`.
 - Links should have `rel="sponsored"` attribute
 - Disclosure should be visible (footer + near links)
 
+### Implementation Checklist
+- [ ] Add affiliate disclosure text in footer ("Some links may earn us a commission")
+- [ ] Add disclosure badge/indicator on individual affiliate links
+- [ ] Update privacy policy to mention affiliate relationships
+
 ## Estimated Effort
 - Database migration: 15 minutes
 - Schema update: 15 minutes

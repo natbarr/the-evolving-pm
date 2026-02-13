@@ -156,10 +156,9 @@ npm run test:e2e   # Playwright E2E tests
 ### Tasks
 - [ ] Create Buy Me a Coffee account
 - [ ] Add "Support this project" link in footer
-- [ ] Add brief disclosure text for future affiliate links
 
 ### Deferred to Post-Launch
-- Affiliate link implementation (see `things_to_come/affiliate-links.md`)
+- Affiliate links and disclosure (see `things_to_come/affiliate-links.md`)
 
 ---
 
@@ -185,7 +184,6 @@ npm run test:e2e   # Playwright E2E tests
 
 ### Legal
 - [x] Privacy policy page (for email collection)
-- [ ] Affiliate disclosure text in footer (for future use)
 
 ---
 
