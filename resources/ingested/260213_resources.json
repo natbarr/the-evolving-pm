@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-13"
+  },
+  "resources": [
+    {
+      "title": "Claude Code for Everything: How the Guy Who Built It Actually Uses It",
+      "url": "https://hannahstulberg.substack.com/p/claude-code-for-everything-how-the",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-01-14",
+      "last_verified": "2026-02-13",
+      "next_review": "2026-05-13",
+      "confidence": 4,
+      "author": "Hannah Stulberg / Boris Cherny",
+      "source": "hannahstulberg.substack.com",
+      "summary": "This article by Hannah Stulberg is the second installment in her 'Claude Code for Everything' series, focusing on how Boris Cherny—Claude Code's creator—actually uses the tool. The piece reveals Cherny's core workflow built around three operational modes: Plan mode for alignment, Default mode for reviewing changes, and Accept Edits mode for trusted autonomous tasks. It covers workspace setup patterns including split-editor configuration, session naming and resumption, parallel sessions, and background agents for delegating subtasks.\n\nComing directly from the tool's creator, these patterns represent authoritative best practices for structuring Claude Code workflows—particularly valuable for PMs who have completed initial setup and want to level up their daily usage."
+    },
+    {
+      "title": "Dharmesh Shah on AEO, AI Agents, and the AI App Store",
+      "url": "https://www.youtube.com/watch?v=fKjgKr-kgAY",
+      "category": "go-to-market",
+      "level": "intermediate",
+      "format": "video",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-02-01",
+      "last_verified": "2026-02-13",
+      "next_review": "2027-02-13",
+      "confidence": 4,
+      "author": "Dharmesh Shah / Rowan Cheung",
+      "source": "youtube.com",
+      "summary": "This interview by Rowan Cheung features Dharmesh Shah, co-founder and CTO of HubSpot, discussing how AI is transforming business distribution and content strategy. The centerpiece is Shah's framework for Answer Engine Optimization (AEO)—optimizing content to be cited by LLMs rather than ranked by traditional search engines. Shah argues the atomic unit has shifted from web pages to snackable, citable content chunks that LLMs can synthesize into answers.\n\nShah also discusses Agent.AI, his no-code agent builder platform with 2 million+ users, offering insights on agent marketplace dynamics, agent-to-agent collaboration, and the maturity curve from deterministic workflows to autonomous agents. For PMs building AI products or managing go-to-market strategy, he provides practical advice: start agents deterministically before adding autonomy, treat agents as teammates requiring training and performance reviews, and apply functional decomposition to break complex problems into AI-solvable components."
+    }
+  ],
+  "rejected": []
+}
