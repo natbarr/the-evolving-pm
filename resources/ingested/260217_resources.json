@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-02-17"
+  },
+  "resources": [
+    {
+      "title": "Subagents in Agentic IDEs",
+      "url": "https://www.builder.io/blog/subagents",
+      "category": "technical-skills",
+      "level": "expert",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-02-03",
+      "last_verified": "2026-02-17",
+      "next_review": "2027-02-17",
+      "confidence": 3,
+      "author": "Alice Moore",
+      "source": "builder.io",
+      "summary": "This article explains when and how to use subagents—specialized agents that main agents spawn to complete focused tasks—covering the key architectural patterns of chaining (sequential handoffs from research to implementation to verification) and fan-out (parallel execution of multiple subagents for concurrent tasks). The piece provides practical guidance on system prompt design, tool scoping, permission management, and output contract specifications for clean inter-agent handoffs.\n\nA critical section addresses risk mitigation and governance considerations including context bloat from poorly structured handoffs, the dangers of over-permissioning subagents with filesystem, database, or API access, and recognizing when subagents create more problems than they solve. For product managers overseeing agentic product development, understanding these orchestration patterns and failure modes is essential for making informed architectural decisions and establishing appropriate governance policies around agent permissions and scope."
+    },
+    {
+      "title": "Preprocessing Unstructured Data for LLM Applications",
+      "url": "https://www.deeplearning.ai/short-courses/preprocessing-unstructured-data-for-llm-applications/",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "course",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2024-02-01",
+      "last_verified": "2026-02-17",
+      "next_review": "2026-05-17",
+      "confidence": 4,
+      "author": "Matt Robinson",
+      "source": "deeplearning.ai",
+      "summary": "This free short course teaches techniques for extracting and processing diverse document formats—PDFs, PowerPoints, Word documents, HTML, and EPUB—to enhance Retrieval Augmented Generation (RAG) systems. Taught by Matt Robinson, Head of Product at Unstructured, the 1-hour 12-minute curriculum covers content extraction and normalization into JSON format, metadata enrichment, document chunking strategies, document image analysis using layout detection and vision transformers, table extraction, and building functional RAG applications.\n\nFor product managers overseeing RAG-powered products, this course provides essential context on the data pipeline challenges engineering teams face when building retrieval systems. Understanding how unstructured data is preprocessed, normalized, and chunked directly informs product decisions about data source support, retrieval quality, and pipeline architecture. The course includes 8 video lessons and 5 hands-on code examples, maintaining beginner accessibility while covering technically substantive material."
+    },
+    {
+      "title": "AI Product Stack of the Top 1% Product Managers",
+      "url": "https://www.youtube.com/watch?v=82zF4BUqxkA",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-14",
+      "last_verified": "2026-02-17",
+      "next_review": "2026-05-17",
+      "confidence": 4,
+      "author": "Aakash Gupta, Rachel Woolen",
+      "source": "youtube.com",
+      "summary": "This 45-minute video features Rachel Woolen, Chief Product Officer at Webflow ($4B), walking through her complete AI productivity system and AI-native product development approach. The first half demonstrates her 'agentic chief of staff' system built with Claude Code agents—including calendar analysis for delegation opportunities, email triage automation, Snowflake analytics querying via MCP servers, podcast preparation, and dinner guest research. She shows how to build agents from scratch, demonstrating a LinkedIn post generator that references training materials and generates accompanying images.\n\nThe second half covers shipping AI-native features: why eval coverage is critical when swapping underlying models (illustrated by a real production incident with Webflow's codegen product), choosing AI features that leverage existing platform strengths rather than competing with standalone tools, and distribution strategy through the evolution from SEO to app store optimization to social virality to answer engine optimization (AEO). Woolen also shares her framework for organizational adoption—providing tool access, supporting with training and builder days, updating career ladders to incentivize AI adoption, and using champions to drive bottom-up adoption across product, design, and data science teams."
+    },
+    {
+      "title": "Turn Claude into a Real Assistant with MCP",
+      "url": "https://www.youtube.com/watch?v=6OkEWYo3IBM",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-10",
+      "last_verified": "2026-02-17",
+      "next_review": "2026-05-17",
+      "confidence": 3,
+      "author": "Relay",
+      "source": "relay.app",
+      "summary": "This introductory video from Relay explains the fundamentals of tool calling and the Model Context Protocol (MCP) through a practical use case: building an AI assistant that cancels meetings and drafts apology emails when a child is sick. The first half provides clear conceptual explanations of how large language models work, why tool calling is necessary for LLMs to take real-world actions, and what MCP actually is—not a tool itself, but a standardized protocol that makes it easier for tools to communicate their capabilities to LLMs, analogous to standardized restaurant menus.\n\nThe second half is a step-by-step walkthrough of creating an MCP server in relay.app with two tools (calendar event lookup and email draft creation), connecting it to Claude as an MCP client, and demonstrating the complete workflow. The video shows real-time debugging when the initial implementation fetches too many calendar events, illustrating the iterative refinement process. For product managers new to MCP and tool calling, this provides the foundational understanding needed to evaluate AI assistant architectures and participate in technical discussions about agentic system design."
+    }
+  ],
+  "rejected": []
+}
