@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-01"
+  },
+  "resources": [
+    {
+      "title": "Your Users Aren't Human Anymore; Start Building for Agents Today",
+      "url": "https://uxdesign.cc/your-users-arent-human-anymore-start-building-for-agents-today-f7f556cb8125",
+      "category": "ai-product-strategy",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-02-01",
+      "last_verified": "2026-03-01",
+      "next_review": "2027-03-01",
+      "confidence": 4,
+      "author": "Tony Beltramelli",
+      "source": "uxdesign.cc",
+      "summary": "This article by Tony Beltramelli (Head of Product at Miro) argues that AI agents are rapidly becoming the primary users of software products, requiring a fundamental rethink of how PMs design, measure, and monetize their products. The piece traces the tipping point to early 2026 when autonomous desktop agents and advanced model releases moved AI from conversational tools to autonomous virtual colleagues. Beltramelli introduces Monthly Active Agents (MAA) as the new north-star metric, replacing traditional Monthly Active Users, and examines how the February 2026 'SaaS-pocalypse'—a $300 billion market value sell-off—exposed the vulnerability of per-seat licensing models when a single human can deploy hundreds of AI agents.\n\nThe article provides a practical framework for building 'agent-native' products, including designing MCP servers with clear, machine-readable function definitions that LLMs can understand natively, launching agent-ready connectors, and rethinking programmatic interfaces for LLM consumption rather than human navigation. For product managers, the key strategic insight is that the atomic unit of product engagement is shifting from human logins to programmatic actions, requiring new approaches to pricing, distribution, and product architecture."
+    }
+  ],
+  "rejected": []
+}
