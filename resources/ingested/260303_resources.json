@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-03"
+  },
+  "resources": [
+    {
+      "title": "How I Run 4–8 Parallel Coding Agents",
+      "url": "https://schipper.ai/posts/parallel-coding-agents/",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-26",
+      "last_verified": "2026-03-03",
+      "next_review": "2026-06-03",
+      "confidence": 4,
+      "author": "Manuel Schipper",
+      "source": "schipper.ai",
+      "summary": "This article by Manuel Schipper details a practical system for running 4–8 parallel AI coding agents using tmux, Markdown specs, bash aliases, and six custom slash commands. The core workflow uses a role naming convention per tmux window—Planner (builds Markdown specs for features), Worker (implements from finished specs), and PM (backlog grooming)—to maintain clarity across concurrent agent sessions. Feature Designs (FDs) are structured Markdown files containing the problem, all solutions considered with pros/cons, the final solution with implementation plan, and verification steps.\n\nSchipper identifies practical limits: around 8 agents is the maximum before losing track of decisions, and not everything parallelizes well since sequential dependencies create merge conflicts. For complex features, he uses a /fd-deep skill that launches 4 Opus agents in parallel to explore different angles before converging on a solution. Product managers benefit from understanding these parallel workflow patterns, practical scaling limits, and the role-based agent organization model applicable to managing AI-assisted development."
+    },
+    {
+      "title": "Prompt, Plan, Review, Revise (First Session Skills)",
+      "url": "https://claudeblattman.com/workflows/first-session-skills/",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-03-01",
+      "last_verified": "2026-03-03",
+      "next_review": "2026-06-03",
+      "confidence": 3,
+      "author": "Claude Blattman",
+      "source": "claudeblattman.com",
+      "summary": "This guide by Claude Blattman presents a four-step iterative loop for Claude Code workflows designed for researchers and managers. The loop consists of: structuring thinking with the /prompt command, planning with Plan mode via Shift+Tab, stress-testing with /review-plan (a fresh agent reviews the plan without conversation history), and closing the loop with /done (capturing decisions for session continuity).\n\nThe key insight is that Claude reviewing its own plan in the same conversation is like asking someone to peer-review their own paper—the /review-plan tool solves this by spinning up a separate agent cold. The author demonstrates the workflow's effectiveness by building a functional website in 90 minutes on airplane WiFi, with the review step catching structural problems, navigation issues, and accessibility gaps."
+    },
+    {
+      "title": "The New Team: What Product Teams Look Like When Code Is Automated",
+      "url": "https://www.giffen.me/writing/the-new-team",
+      "category": "ai-product-strategy",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-02-18",
+      "last_verified": "2026-03-03",
+      "next_review": "2027-03-03",
+      "confidence": 4,
+      "author": "Andrew Giffen",
+      "source": "giffen.me",
+      "summary": "This article by Andrew Giffen argues that automated code generation fundamentally restructures software team composition. The core framework identifies a 'scarcity shift'—traditional teams organized around code being expensive and slow, but as that constraint disappears, coordination infrastructure like sprint planning, story points, and handoff chains becomes unnecessary overhead. Giffen proposes a Three-Person Model replacing larger squads: a visionary PM with technical fluency, a designer focused on user delight, and a senior architect ensuring system coherence.\n\nThe article traces role evolution across the team: senior engineers elevate to architects, junior engineering work compresses, PMs and designers become builders themselves, and junior PMs face pressure to develop deeper customer insight. The central tension is that 'strategy becomes the scarce resource' since without engineering capacity constraints filtering priorities, teams risk feature bloat without disciplined strategic direction."
+    }
+  ],
+  "rejected": []
+}
