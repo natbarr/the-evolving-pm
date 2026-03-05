@@ -7,6 +7,8 @@ A curated learning resource library for AI Product Managers.
 - **Framework**: Next.js 14 (App Router)
 - **Database**: Supabase (PostgreSQL)
 - **Styling**: Tailwind CSS
+- **Icons**: Phosphor Icons (`@phosphor-icons/react`) — use `/dist/ssr` imports in server components and `constants.ts`
+- **Fonts**: Fraunces (display/serif), DM Sans (body), JetBrains Mono (mono) — loaded via `next/font/google`, injected as CSS variables
 - **Validation**: Zod
 - **Email**: Resend (for submission confirmations)
 - **Error Tracking**: Sentry
@@ -48,6 +50,7 @@ tests/
 
 things_to_come/          # PRDs for post-launch features
 submissions/             # User-submitted resources (dated JSON, gitignored)
+archive/                 # Design artifacts (previews, refactor plans, etc.)
 ```
 
 ## Testing
@@ -79,6 +82,9 @@ Resources are added via the `/api/ingest` endpoint. See `.claude/skills/ingest/S
 - **Validation**: Zod schemas for all request body parsing and external data
 - **Supabase clients**: Use `client.ts` for browser components, `server.ts` for server components and API routes
 - **Formatting**: ESLint only — no Prettier configured
+- **Icons**: Import Phosphor icons from `@phosphor-icons/react/dist/ssr` in server components and `constants.ts`; use `@phosphor-icons/react` directly in client components only
+- **Typography**: Use `font-display` for headings/wordmark, `font-mono` for overlines/badges/metadata labels, `font-sans` for body
+- **Artifacts**: Never delete design artifacts — move them to `archive/` instead
 - **Tests**:
   - Unit tests (`tests/unit/`) for pure functions and utilities
   - Integration tests (`tests/integration/`) for API routes
