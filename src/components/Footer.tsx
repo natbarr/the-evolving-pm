@@ -3,76 +3,94 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="border-t border-primary-200 bg-primary-50">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Main footer row */}
+        <div className="flex flex-col gap-12 py-14 md:flex-row md:justify-between">
+          {/* Brand */}
+          <div className="flex-shrink-0">
             <Link
               href="/"
-              className="text-lg font-semibold text-primary-900 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+              className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
             >
-              The Evolving PM
+              <span className="font-display text-lg font-medium tracking-tight text-primary-900">
+                The Evolving <span className="text-accent-600">PM</span>
+              </span>
             </Link>
-            <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-              <Link
-                href="/resources"
-                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
-              >
-                Resources
-              </Link>
-              <Link
-                href="/categories"
-                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
-              >
-                Categories
-              </Link>
-              <Link
-                href="/submit"
-                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
-              >
-                Submit a Resource
-              </Link>
-              <Link
-                href="/about"
-                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
-              >
+            <p className="mt-3 max-w-[220px] text-sm leading-relaxed text-primary-500">
+              Curated resources for Product Managers navigating AI&apos;s impact on their craft.
+            </p>
+          </div>
+
+          {/* Nav groups */}
+          <div className="flex gap-12 sm:gap-16">
+            <div>
+              <h4 className="mb-4 font-mono text-[0.625rem] font-medium uppercase tracking-widest text-primary-400">
+                Browse
+              </h4>
+              <ul className="flex flex-col gap-3">
+                {[
+                  { label: "Resources", href: "/resources" },
+                  { label: "Categories", href: "/categories" },
+                  { label: "Submit a Resource", href: "/submit" },
+                ].map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="text-sm text-primary-500 transition-colors hover:text-primary-900 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="mb-4 font-mono text-[0.625rem] font-medium uppercase tracking-widest text-primary-400">
                 About
-              </Link>
-              <Link
-                href="/privacy"
-                className="py-2 text-primary-600 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
-              >
-                Privacy
-              </Link>
-            </nav>
+              </h4>
+              <ul className="flex flex-col gap-3">
+                {[
+                  { label: "About", href: "/about" },
+                  { label: "Privacy", href: "/privacy" },
+                ].map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className="text-sm text-primary-500 transition-colors hover:text-primary-900 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-primary-200 pt-8">
-          <p className="text-sm text-primary-500">
-            Curated resources for Product Managers navigating AI&apos;s impact on their craft.
+
+        {/* Bottom bar */}
+        <div className="flex flex-col gap-2 border-t border-primary-200 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-primary-400">
+            &copy; {new Date().getFullYear()} The Evolving PM. All resources remain property of their original creators.
           </p>
-          <p className="mt-2 text-sm text-primary-500">
-            Built by{" "}
+          <div className="flex gap-5">
             <a
               href="https://natbarr.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+              className="text-xs text-primary-400 transition-colors hover:text-primary-900 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
             >
-              Nat
+              natbarr.com
             </a>
-            {" · "}
             <a
               href="https://linkedin.com/in/nat-barr"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-700 hover:text-primary-900 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+              className="text-xs text-primary-400 transition-colors hover:text-primary-900 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
             >
               LinkedIn
             </a>
-          </p>
-          <p className="mt-2 text-xs text-primary-500">
-            &copy; {new Date().getFullYear()} The Evolving PM. All resources remain property of their original creators.
-          </p>
+          </div>
         </div>
       </div>
     </footer>

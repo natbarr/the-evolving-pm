@@ -34,37 +34,47 @@ export function Header() {
           <div className="flex items-center">
             <Link
               href="/"
-              className="flex items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+              className="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
             >
-              <span className="text-xl font-semibold text-primary-900">
-                The Evolving PM
+              <span className="font-display text-lg font-medium tracking-tight text-primary-900">
+                The Evolving <span className="text-accent-600">PM</span>
               </span>
             </Link>
           </div>
 
           {/* Desktop navigation */}
           <div className="hidden md:flex md:items-center md:gap-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary-900 rounded-lg px-2 py-1 -mx-2 -my-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
-                  pathname === item.href || pathname.startsWith(item.href + "/")
-                    ? "text-primary-900"
-                    : "text-primary-500"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.name === "Submit" ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="rounded-lg bg-accent-600 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
+                >
+                  {item.name} a Resource
+                </Link>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary-900 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
+                    pathname === item.href || pathname.startsWith(item.href + "/")
+                      ? "text-primary-900"
+                      : "text-primary-500"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2.5 text-primary-500 hover:bg-primary-100 hover:text-primary-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-md p-2.5 text-primary-500 hover:bg-primary-100 hover:text-primary-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
             >
@@ -120,10 +130,10 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "block rounded-md px-3 py-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-500",
+                    "block rounded-md px-3 py-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-600",
                     pathname === item.href || pathname.startsWith(item.href + "/")
                       ? "bg-primary-100 text-primary-900"
-                      : "text-primary-500 hover:bg-primary-50 hover:text-primary-900"
+                      : "text-primary-500 hover:bg-primary-100 hover:text-primary-900"
                   )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
