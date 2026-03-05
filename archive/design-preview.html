@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Evolving PM — Design Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       DESIGN TOKENS
+    =========================== */
+    :root {
+      --canvas:          #FAF9F6;
+      --surface:         #F4F1EB;
+      --surface-raised:  #FFFFFF;
+
+      --text-primary:    #1C1917;
+      --text-body:       #44403C;
+      --text-muted:      #78716C;
+      --text-inverse:    #FAF9F6;
+
+      --border:          #E7E2D9;
+      --border-strong:   #C4BEB5;
+
+      --accent:          #2D5A4A;
+      --accent-hover:    #214237;
+      --accent-subtle:   #E4EDE9;
+      --accent-text:     #1A3D31;
+
+      --font-display:    'Fraunces', Georgia, serif;
+      --font-body:       'DM Sans', system-ui, sans-serif;
+      --font-mono:       'JetBrains Mono', monospace;
+
+      --radius-sm:  4px;
+      --radius-md:  8px;
+      --radius-lg:  12px;
+    }
+
+    /* ===========================
+       RESET + BASE
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--canvas);
+      color: var(--text-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ===========================
+       PREVIEW BANNER
+    =========================== */
+    .preview-banner {
+      background: var(--accent);
+      color: var(--text-inverse);
+      text-align: center;
+      padding: 9px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===========================
+       HEADER
+    =========================== */
+    header {
+      background: var(--canvas);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .wordmark-accent {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover {
+      color: var(--text-primary);
+    }
+
+    nav a.active {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--text-inverse) !important;
+      padding: 7px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.8125rem !important;
+      transition: background 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+    }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      padding: 88px 0 100px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow-line {
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-eyebrow-text {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.25rem);
+      font-weight: 400;
+      max-width: 820px;
+      margin-bottom: 28px;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--text-inverse);
+      padding: 13px 26px;
+      font-size: 0.9375rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-body);
+      padding: 12px 26px;
+      font-size: 0.9375rem;
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      padding: 10px 0;
+      font-size: 0.875rem;
+    }
+
+    .btn-ghost:hover {
+      color: var(--accent-hover);
+    }
+
+    /* ===========================
+       SECTIONS
+    =========================== */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-overline {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.875rem, 3.5vw, 2.625rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    /* ===========================
+       CATEGORY CARDS
+    =========================== */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+
+    .category-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(45, 90, 74, 0.07);
+    }
+
+    .category-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-subtle);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .category-name {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+
+    .category-card:hover .category-name {
+      color: var(--accent);
+    }
+
+    .category-desc {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===========================
+       RESOURCE CARDS
+    =========================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .resource-card {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .resource-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 18px rgba(45, 90, 74, 0.08);
+    }
+
+    .card-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+      transition: color 0.15s;
+    }
+
+    .resource-card:hover .card-title {
+      color: var(--accent);
+    }
+
+    .card-summary {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-format {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .card-source {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===========================
+       BADGES
+    =========================== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+
+    .badge-category {
+      background: var(--accent-subtle);
+      color: var(--accent-text);
+    }
+
+    .badge-level {
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge-format {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ===========================
+       COMPONENT SHOWCASE
+    =========================== */
+    .showcase-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .showcase-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .showcase-block {
+      margin-bottom: 40px;
+    }
+
+    /* ===========================
+       TYPOGRAPHY SPECIMEN
+    =========================== */
+    .type-specimen {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      align-items: baseline;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-meta {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    /* ===========================
+       COLOR PALETTE
+    =========================== */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .color-swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .color-swatch-block {
+      height: 64px;
+    }
+
+    .color-swatch-label {
+      padding: 8px 12px;
+      background: var(--surface-raised);
+    }
+
+    .color-swatch-name {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .color-swatch-value {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .wordmark {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      max-width: 220px;
+      line-height: 1.6;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 56px;
+    }
+
+    .footer-nav-group h4 {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-nav-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-nav-group a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-nav-group a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* ===========================
+       ICON SIZES
+    =========================== */
+    .icon-sm { width: 14px; height: 14px; }
+    .icon-md { width: 18px; height: 18px; }
+    .icon-lg { width: 22px; height: 22px; }
+  </style>
+</head>
+<body>
+
+  <!-- Preview Banner -->
+  <div class="preview-banner">Design Preview — The Evolving PM Refactor Proposal</div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="wordmark">The Evolving <span class="wordmark-accent">PM</span></a>
+        <nav>
+          <a href="#" class="active">Resources</a>
+          <a href="#">Categories</a>
+          <a href="#">About</a>
+          <a href="#" class="nav-cta">Submit a Resource</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">For Product Managers</span>
+      </div>
+      <h1>Your AI learning<br>journey, <em>curated.</em></h1>
+      <p class="hero-sub">Hand-picked resources for PMs navigating AI's impact on their craft. Reviewed, organized, and updated as the field evolves.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">
+          Start Exploring
+          <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4"></path>
+          </svg>
+        </a>
+        <a href="#" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overline">Browse</div>
+        <h2 class="section-title">Explore by Category</h2>
+      </div>
+      <div class="category-grid">
+
+        <a href="#" class="category-card">
+          <div class="category-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+          </div>
+          <div class="category-name">AI Fundamentals</div>
+          <div class="category-desc">Core concepts of artificial intelligence and machine learning every PM should understand.</div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 13.5 10.5 6l4 4L21 3.5M21 3.5H15m6 0v6"></path>
+            </svg>
+          </div>
+          <div class="category-name">AI Product Strategy</div>
+          <div class="category-desc">Frameworks for building AI product strategy and navigating unique challenges of AI products.</div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+            </svg>
+          </div>
+          <div class="category-name">Technical Skills</div>
+          <div class="category-desc">Hands-on skills for working with AI tools, APIs, and development workflows.</div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"></path>
+            </svg>
+          </div>
+          <div class="category-name">Business &amp; Economics</div>
+          <div class="category-desc">AI product pricing, cost optimization, unit economics, and sustainable AI businesses.</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCE CARDS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overline">Featured</div>
+        <h2 class="section-title">Latest Resources</h2>
+      </div>
+      <div class="card-grid">
+
+        <a href="#" class="resource-card">
+          <div class="card-badges">
+            <span class="badge badge-category">AI Product Strategy</span>
+            <span class="badge badge-level">Intermediate</span>
+          </div>
+          <div class="card-title">Building Defensible AI Products in a Commoditizing Market</div>
+          <div class="card-summary">As foundation models become cheaper and more capable, learn how to build moats that compound over time through data, workflows, and distribution.</div>
+          <div class="card-footer">
+            <div class="card-format">
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="12" height="10" rx="1"></rect>
+                <path d="M5 7h6M5 9.5h4"></path>
+              </svg>
+              Article
+            </div>
+            <span class="card-source">a16z.com</span>
+          </div>
+        </a>
+
+        <a href="#" class="resource-card">
+          <div class="card-badges">
+            <span class="badge badge-category">AI Fundamentals</span>
+            <span class="badge badge-level">Beginner</span>
+          </div>
+          <div class="card-title">How Large Language Models Actually Work — a PM's Explainer</div>
+          <div class="card-summary">A no-code, no-math primer on transformers, context windows, and why they hallucinate. Essential reading before your next AI sprint planning session.</div>
+          <div class="card-footer">
+            <div class="card-format">
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="8" r="6"></circle>
+                <path d="M6.5 5.5l4 2.5-4 2.5V5.5Z" fill="currentColor" stroke="none"></path>
+              </svg>
+              Video
+            </div>
+            <span class="card-source">YouTube</span>
+          </div>
+        </a>
+
+        <a href="#" class="resource-card">
+          <div class="card-badges">
+            <span class="badge badge-category">Tools &amp; Workflows</span>
+            <span class="badge badge-level">Beginner</span>
+          </div>
+          <div class="card-title">Prompt Engineering Patterns for Product Discovery</div>
+          <div class="card-summary">Practical prompt templates for user research synthesis, PRD drafting, competitive analysis, and weekly planning. Copy-paste ready for your next session.</div>
+          <div class="card-footer">
+            <div class="card-format">
+              <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="12" height="10" rx="1"></rect>
+                <path d="M5 7h6M5 9.5h4"></path>
+              </svg>
+              Article
+            </div>
+            <span class="card-source">lenny.pub</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENT SHOWCASE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overline">System</div>
+        <h2 class="section-title">Design Components</h2>
+      </div>
+
+      <!-- Typography Specimen -->
+      <div class="showcase-block">
+        <div class="showcase-label">Typography</div>
+        <div class="type-specimen">
+
+          <div class="type-row">
+            <div class="type-meta">Display / H1<br>Fraunces 400<br>Optical: 144</div>
+            <h1 style="font-size: 3.5rem; font-weight: 400; letter-spacing: -0.035em;">Your AI learning journey</h1>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Display italic<br>Fraunces 400i<br>Optical: 144</div>
+            <h1 style="font-size: 3.5rem; font-weight: 400; font-style: italic; letter-spacing: -0.035em; color: var(--accent);">curated.</h1>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Heading / H2<br>Fraunces 400<br>Optical: 72</div>
+            <h2 style="font-size: 2.5rem; font-weight: 400; font-variation-settings: 'opsz' 72;">Explore by Category</h2>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Card Title / H3<br>Fraunces 500<br>Optical: 24</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.015em; font-variation-settings: 'opsz' 24;">Building Defensible AI Products in a Commoditizing Market</h3>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Body<br>DM Sans 400<br>16px / 1.65lh</div>
+            <p style="font-size: 1rem; color: var(--text-body);">Hand-picked resources for PMs navigating AI's impact on their craft. Reviewed, organized, and updated as the field evolves alongside the technology.</p>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Body Muted<br>DM Sans 400<br>14px</div>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Core concepts of artificial intelligence and machine learning every PM should understand.</p>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Label / Mono<br>JetBrains Mono 500<br>11px / 0.1em tracking</div>
+            <span style="font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">AI Product Strategy · Intermediate · Article</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="showcase-block">
+        <div class="showcase-label">Badges</div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="showcase-row">
+            <span class="badge badge-category">AI Fundamentals</span>
+            <span class="badge badge-category">AI Product Strategy</span>
+            <span class="badge badge-category">Tools &amp; Workflows</span>
+            <span class="badge badge-category">Ethics &amp; Governance</span>
+          </div>
+          <div class="showcase-row">
+            <span class="badge badge-level">Beginner</span>
+            <span class="badge badge-level">Intermediate</span>
+            <span class="badge badge-level">Expert</span>
+          </div>
+          <div class="showcase-row">
+            <span class="badge badge-format">Article</span>
+            <span class="badge badge-format">Video</span>
+            <span class="badge badge-format">Course</span>
+            <span class="badge badge-format">Podcast</span>
+            <span class="badge badge-format">Book</span>
+            <span class="badge badge-format">Newsletter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="showcase-block">
+        <div class="showcase-label">Buttons</div>
+        <div class="showcase-row">
+          <a href="#" class="btn btn-primary">Start Exploring</a>
+          <a href="#" class="btn btn-outline">View All Categories</a>
+          <a href="#" class="btn btn-ghost">
+            Learn more
+            <svg class="icon-sm" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="showcase-block">
+        <div class="showcase-label">Color Tokens</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #FAF9F6;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--canvas</span>
+              <span class="color-swatch-value">#FAF9F6</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #F4F1EB;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--surface</span>
+              <span class="color-swatch-value">#F4F1EB</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #1C1917;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--text-primary</span>
+              <span class="color-swatch-value">#1C1917</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #44403C;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--text-body</span>
+              <span class="color-swatch-value">#44403C</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #78716C;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--text-muted</span>
+              <span class="color-swatch-value">#78716C</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #2D5A4A;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--accent</span>
+              <span class="color-swatch-value">#2D5A4A</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #E4EDE9;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--accent-subtle</span>
+              <span class="color-swatch-value">#E4EDE9</span>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch-block" style="background: #E7E2D9;"></div>
+            <div class="color-swatch-label">
+              <span class="color-swatch-name">--border</span>
+              <span class="color-swatch-value">#E7E2D9</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#" class="wordmark">The Evolving <span class="wordmark-accent">PM</span></a>
+          <p class="footer-tagline">Curated resources for Product Managers navigating AI's impact on their craft.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-nav-group">
+            <h4>Browse</h4>
+            <ul>
+              <li><a href="#">Resources</a></li>
+              <li><a href="#">Categories</a></li>
+              <li><a href="#">Submit a Resource</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-group">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 The Evolving PM. All resources remain property of their original creators.</p>
+        <div class="footer-links">
+          <a href="#">natbarr.com</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
