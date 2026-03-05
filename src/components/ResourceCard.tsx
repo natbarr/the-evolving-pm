@@ -32,9 +32,9 @@ export function ResourceCard({ resource }: ResourceCardProps) {
             {truncate(resource.summary, 150)}
           </CardDescription>
         </CardHeader>
-        <CardFooter className="flex items-center justify-between text-xs text-primary-500">
-          <span className="flex items-center gap-1">
-            <span>{format?.icon}</span>
+        <CardFooter className="flex items-center justify-between font-mono text-[0.625rem] uppercase tracking-wide text-primary-500">
+          <span className="flex items-center gap-1.5">
+            {format?.Icon && <format.Icon size={13} />}
             <span>{format?.name || resource.format}</span>
           </span>
           {resource.source && (

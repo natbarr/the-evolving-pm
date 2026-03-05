@@ -110,7 +110,7 @@ export default async function ResourcePage({
             <Badge variant="category">{category?.name || resource.category}</Badge>
             <Badge variant="level">{level?.name || resource.level}</Badge>
             <Badge variant="format">
-              {format?.icon} {format?.name || resource.format}
+              {format?.name || resource.format}
             </Badge>
             {resource.access_type === "paid" && (
               <Badge className="bg-amber-100 text-amber-800">Paid</Badge>
@@ -238,8 +238,9 @@ export default async function ResourcePage({
           <dl className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             <div className="bg-white rounded-lg border border-primary-200 p-4">
               <dt className="text-sm text-primary-500 mb-1">Format</dt>
-              <dd className="font-medium text-primary-900">
-                {format?.icon} {format?.name || resource.format}
+              <dd className="flex items-center gap-1.5 font-medium text-primary-900">
+                {format?.Icon && <format.Icon size={14} />}
+                {format?.name || resource.format}
               </dd>
             </div>
             <div className="bg-white rounded-lg border border-primary-200 p-4">

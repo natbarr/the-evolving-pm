@@ -1,3 +1,16 @@
+import type { Icon } from "@phosphor-icons/react";
+import {
+  Article,
+  Video,
+  GraduationCap,
+  Microphone,
+  Books,
+  Wrench,
+  GithubLogo,
+  EnvelopeSimple,
+  Users,
+  ListBullets,
+} from "@phosphor-icons/react/dist/ssr";
 import type { Category, Level, Format, ContentType } from "./supabase/types";
 
 export const CATEGORIES: Record<Category, { name: string; description: string }> = {
@@ -68,17 +81,17 @@ export const LEVELS: Record<Level, { name: string; description: string }> = {
   },
 };
 
-export const FORMATS: Record<Format, { name: string; icon: string }> = {
-  article: { name: "Article", icon: "📄" },
-  video: { name: "Video", icon: "🎬" },
-  course: { name: "Course", icon: "🎓" },
-  podcast: { name: "Podcast", icon: "🎧" },
-  book: { name: "Book", icon: "📚" },
-  tool: { name: "Tool", icon: "🛠️" },
-  repository: { name: "Repository", icon: "📦" },
-  newsletter: { name: "Newsletter", icon: "📬" },
-  community: { name: "Community", icon: "👥" },
-  reference: { name: "Reference", icon: "📋" },
+export const FORMATS: Record<Format, { name: string; Icon: Icon }> = {
+  article:    { name: "Article",    Icon: Article },
+  video:      { name: "Video",      Icon: Video },
+  course:     { name: "Course",     Icon: GraduationCap },
+  podcast:    { name: "Podcast",    Icon: Microphone },
+  book:       { name: "Book",       Icon: Books },
+  tool:       { name: "Tool",       Icon: Wrench },
+  repository: { name: "Repository", Icon: GithubLogo },
+  newsletter: { name: "Newsletter", Icon: EnvelopeSimple },
+  community:  { name: "Community",  Icon: Users },
+  reference:  { name: "Reference",  Icon: ListBullets },
 };
 
 export const CONTENT_TYPE_REVIEW_DAYS: Record<ContentType, number> = {
