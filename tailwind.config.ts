@@ -9,40 +9,44 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary - calm blue-gray palette
+        // Primary — warm stone (replaces cold slate)
         primary: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-          950: "#020617",
+          50: "#fafaf9",
+          100: "#f5f5f4",
+          200: "#e7e5e4",
+          300: "#d6d3d1",
+          400: "#a8a29e",
+          500: "#78716c",
+          600: "#57534e",
+          700: "#44403c",
+          800: "#292524",
+          900: "#1c1917",
+          950: "#0c0a09",
         },
-        // Accent - warm amber for CTAs
+        // Accent — forest green (replaces amber)
         accent: {
-          50: "#fffbeb",
-          100: "#fef3c7",
-          200: "#fde68a",
-          300: "#fcd34d",
-          400: "#fbbf24",
-          500: "#f59e0b",
-          600: "#d97706",
-          700: "#b45309",
-          800: "#92400e",
-          900: "#78350f",
+          50: "#f0f7f4",
+          100: "#e4ede9",
+          200: "#c2d9d0",
+          300: "#95bfb0",
+          400: "#619f8d",
+          500: "#3d7a68",
+          600: "#2d5a4a",
+          700: "#214237",
+          800: "#1a3d31",
+          900: "#142e25",
+          950: "#0a1e18",
         },
-        // Semantic colors
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // Semantic color aliases (map to CSS custom properties)
+        canvas:          "var(--canvas)",
+        surface:         "var(--surface)",
+        background:      "var(--background)",
+        foreground:      "var(--foreground)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans:    ["var(--font-body)", "system-ui", "sans-serif"],
+        mono:    ["var(--font-mono)", "monospace"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       typography: {
         DEFAULT: {
