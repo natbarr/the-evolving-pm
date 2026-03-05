@@ -13,10 +13,10 @@ export function CategoryNav() {
       <Link
         href="/resources"
         className={cn(
-          "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+          "rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
           pathname === "/resources"
-            ? "bg-primary-900 text-white"
-            : "bg-primary-100 text-primary-700 hover:bg-primary-200"
+            ? "bg-accent-600 text-white"
+            : "bg-primary-100 text-primary-600 hover:bg-primary-200 hover:text-primary-900"
         )}
       >
         All
@@ -26,10 +26,10 @@ export function CategoryNav() {
           key={slug}
           href={`/categories/${slug}`}
           className={cn(
-            "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+            "rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
             pathname === `/categories/${slug}`
-              ? "bg-primary-900 text-white"
-              : "bg-primary-100 text-primary-700 hover:bg-primary-200"
+              ? "bg-accent-600 text-white"
+              : "bg-primary-100 text-primary-600 hover:bg-primary-200 hover:text-primary-900"
           )}
         >
           {name}

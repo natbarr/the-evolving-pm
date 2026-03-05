@@ -17,9 +17,9 @@ export function ResourceCard({ resource }: ResourceCardProps) {
   return (
     <Link
       href={`/resources/${resource.slug}`}
-      className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+      className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
     >
-      <Card className="h-full flex flex-col group-hover:border-accent-300 group-focus-visible:border-accent-300 transition-colors">
+      <Card className="h-full flex flex-col group-hover:border-accent-600 group-focus-visible:border-accent-600 transition-colors">
         <CardHeader className="flex-1">
           <div className="flex flex-wrap gap-2 mb-3">
             <Badge variant="category">{category?.name || resource.category}</Badge>

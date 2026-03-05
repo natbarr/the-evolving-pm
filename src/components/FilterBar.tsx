@@ -43,7 +43,7 @@ export function FilterBar({
   );
 
   const selectClasses =
-    "rounded-lg border border-primary-200 bg-white px-3 py-2.5 text-sm text-primary-700 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500";
+    "rounded-lg border border-primary-200 bg-white px-3 py-2 text-sm text-primary-700 transition-colors focus:border-accent-600 focus:outline-none focus:ring-1 focus:ring-accent-600";
 
   return (
     <div className="flex flex-wrap gap-3 items-center">

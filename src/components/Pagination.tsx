@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 
 type PaginationProps = {
@@ -61,26 +62,14 @@ export function Pagination({
       <Link
         href={createPageUrl(currentPage - 1)}
         className={cn(
-          "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
+          "inline-flex items-center justify-center gap-1 rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
           currentPage === 1
             ? "pointer-events-none text-primary-300"
             : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"
         )}
         aria-disabled={currentPage === 1}
       >
-        <svg
-          className="h-4 w-4 mr-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5"
-          />
-        </svg>
+        <CaretLeft size={14} />
         Previous
       </Link>
 
@@ -91,16 +80,16 @@ export function Pagination({
               key={`ellipsis-${index}`}
               className="px-3 py-2 text-sm text-primary-400"
             >
-              ...
+              &middot;&middot;&middot;
             </span>
           ) : (
             <Link
               key={page}
               href={createPageUrl(page)}
               className={cn(
-                "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
+                "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
                 page === currentPage
-                  ? "bg-primary-900 text-white"
+                  ? "bg-accent-600 text-white"
                   : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"
               )}
               aria-current={page === currentPage ? "page" : undefined}
@@ -114,7 +103,7 @@ export function Pagination({
       <Link
         href={createPageUrl(currentPage + 1)}
         className={cn(
-          "inline-flex items-center justify-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
+          "inline-flex items-center justify-center gap-1 rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2",
           currentPage === totalPages
             ? "pointer-events-none text-primary-300"
             : "text-primary-600 hover:bg-primary-100 hover:text-primary-900"
@@ -122,19 +111,7 @@ export function Pagination({
         aria-disabled={currentPage === totalPages}
       >
         Next
-        <svg
-          className="h-4 w-4 ml-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5"
-          />
-        </svg>
+        <CaretRight size={14} />
       </Link>
     </nav>
   );
