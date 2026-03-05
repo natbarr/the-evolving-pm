@@ -13,23 +13,26 @@ export default function AboutPage() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Mission */}
         <section className="mb-16">
-          <h1 className="text-3xl font-bold text-primary-900 mb-6">
+          <p className="font-mono text-[0.6875rem] font-medium uppercase tracking-widest text-accent-600 mb-3">
+            About
+          </p>
+          <h1 className="font-display text-3xl font-normal tracking-tight text-primary-900 mb-6">
             About The Evolving PM
           </h1>
-          <div className="prose prose-primary max-w-none">
-            <p className="text-lg text-primary-700 leading-relaxed mb-4">
+          <div className="space-y-4">
+            <p className="text-lg text-primary-600 leading-relaxed">
               The world of product management is changing rapidly. AI is
               reshaping how we build products, understand users, and make
               decisions. For PMs, keeping up with this transformation can feel
               overwhelming.
             </p>
-            <p className="text-lg text-primary-700 leading-relaxed mb-4">
+            <p className="text-lg text-primary-600 leading-relaxed">
               The Evolving PM exists to cut through the noise. This is a
               hand-curated collection of resources designed to help Product
               Managers at every stage of their AI learning journey—from
               understanding the fundamentals to leading AI product strategy.
             </p>
-            <p className="text-lg text-primary-700 leading-relaxed">
+            <p className="text-lg text-primary-600 leading-relaxed">
               Every resource here has been personally reviewed and evaluated. No
               sponsored content, no affiliate links—just quality resources
               organized to help you learn effectively.
@@ -39,26 +42,26 @@ export default function AboutPage() {
 
         {/* Philosophy */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-primary-900 mb-6">
+          <h2 className="font-display text-2xl font-normal tracking-tight text-primary-900 mb-6">
             Curation Philosophy
           </h2>
-          <div className="space-y-6">
-            <div className="bg-primary-50 rounded-xl p-6">
-              <h3 className="font-semibold text-primary-900 mb-2">
+          <div className="space-y-4">
+            <div className="bg-surface rounded-xl p-6">
+              <h3 className="font-display font-medium text-primary-900 mb-2">
                 Quality Over Quantity
               </h3>
-              <p className="text-primary-700">
+              <p className="text-sm text-primary-600 leading-relaxed">
                 Rather than an exhaustive list, this library focuses on the best
                 resources in each category. Every addition is evaluated for
                 accuracy, clarity, and practical value for PMs.
               </p>
             </div>
 
-            <div className="bg-primary-50 rounded-xl p-6">
-              <h3 className="font-semibold text-primary-900 mb-2">
+            <div className="bg-surface rounded-xl p-6">
+              <h3 className="font-display font-medium text-primary-900 mb-2">
                 Regularly Reviewed
               </h3>
-              <p className="text-primary-700">
+              <p className="text-sm text-primary-600 leading-relaxed">
                 AI moves fast. Resources are reviewed on a schedule based on
                 their content type—evergreen content less frequently,
                 model-dependent content more often—to ensure information stays
@@ -66,11 +69,11 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="bg-primary-50 rounded-xl p-6">
-              <h3 className="font-semibold text-primary-900 mb-2">
+            <div className="bg-surface rounded-xl p-6">
+              <h3 className="font-display font-medium text-primary-900 mb-2">
                 PM-Focused Perspective
               </h3>
-              <p className="text-primary-700">
+              <p className="text-sm text-primary-600 leading-relaxed">
                 Technical depth matters, but so does practical application.
                 Resources are selected based on how well they help PMs do their
                 jobs better, not just how technically impressive they are.
@@ -81,14 +84,14 @@ export default function AboutPage() {
 
         {/* Evaluation Process */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-primary-900 mb-6">
+          <h2 className="font-display text-2xl font-normal tracking-tight text-primary-900 mb-6">
             How Resources Are Evaluated
           </h2>
           <div className="prose prose-primary max-w-none">
-            <p className="text-primary-700 mb-4">
+            <p className="text-primary-600 mb-4">
               Each resource goes through a consistent evaluation process:
             </p>
-            <ol className="list-decimal list-inside space-y-3 text-primary-700">
+            <ol className="list-decimal list-inside space-y-3 text-primary-600">
               <li>
                 <strong>Initial review:</strong> Is this relevant and valuable
                 for Product Managers learning about AI?
@@ -115,18 +118,18 @@ export default function AboutPage() {
 
         {/* Categories Explanation */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-primary-900 mb-6">
+          <h2 className="font-display text-2xl font-normal tracking-tight text-primary-900 mb-6">
             Resource Categories
           </h2>
-          <p className="text-primary-700 mb-6">
+          <p className="text-primary-600 mb-6">
             Resources are organized into categories that reflect the key skill
             areas for AI-savvy Product Managers:
           </p>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             {Object.entries(CATEGORIES).map(([slug, category]) => (
               <div key={slug} className="border border-primary-200 rounded-lg p-4">
-                <h3 className="font-semibold text-primary-900">{category.name}</h3>
-                <p className="text-sm text-primary-600 mt-1">
+                <h3 className="font-display font-medium text-primary-900">{category.name}</h3>
+                <p className="text-sm text-primary-500 mt-1 leading-relaxed">
                   {category.description}
                 </p>
               </div>
@@ -136,14 +139,14 @@ export default function AboutPage() {
 
         {/* About the Creator */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-primary-900 mb-6">
+          <h2 className="font-display text-2xl font-normal tracking-tight text-primary-900 mb-6">
             Who&apos;s Behind This
           </h2>
-          <div className="bg-primary-50 rounded-xl p-6">
-            <p className="text-lg text-primary-700 leading-relaxed mb-4">
+          <div className="bg-surface rounded-xl p-6">
+            <p className="text-lg text-primary-600 leading-relaxed mb-3">
               Hi, I&apos;m <strong>Nat</strong>—a product builder and leader.
             </p>
-            <p className="text-primary-700 leading-relaxed">
+            <p className="text-primary-600 leading-relaxed">
               I&apos;m jazzed to see the evolution of product management opening doors
               for more product builders, and I built The Evolving PM to help others
               grow on that journey.
@@ -153,10 +156,10 @@ export default function AboutPage() {
 
         {/* CTA */}
         <section className="text-center py-8 border-t border-primary-200">
-          <h2 className="text-xl font-bold text-primary-900 mb-4">
+          <h2 className="font-display text-xl font-normal tracking-tight text-primary-900 mb-4">
             Ready to Start Learning?
           </h2>
-          <p className="text-primary-600 mb-6">
+          <p className="text-primary-500 mb-6">
             Browse the resource library or suggest a resource you&apos;ve found
             valuable.
           </p>

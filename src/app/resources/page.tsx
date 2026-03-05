@@ -122,10 +122,13 @@ export default async function ResourcesPage({
     <div className="py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-primary-900 mb-2">
+          <p className="font-mono text-[0.6875rem] font-medium uppercase tracking-widest text-accent-600 mb-2">
+            Library
+          </p>
+          <h1 className="font-display text-3xl font-normal tracking-tight text-primary-900 mb-2">
             Resource Library
           </h1>
-          <p className="text-primary-600">
+          <p className="text-primary-500">
             Explore curated resources to accelerate your AI learning journey.
           </p>
         </div>

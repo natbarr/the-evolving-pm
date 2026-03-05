@@ -1,12 +1,12 @@
 export function ResourceCardSkeleton() {
   return (
-    <div className="rounded-xl border border-primary-200 bg-white p-6 shadow-sm h-full flex flex-col animate-pulse">
+    <div className="rounded-xl border border-primary-200 bg-white p-6 h-full flex flex-col animate-pulse">
       {/* Header */}
       <div className="flex-1 mb-4">
         {/* Badges */}
         <div className="flex gap-2 mb-3">
-          <div className="h-5 w-20 rounded-full bg-primary-100" />
-          <div className="h-5 w-16 rounded-full bg-primary-100" />
+          <div className="h-5 w-20 rounded bg-primary-100" />
+          <div className="h-5 w-16 rounded bg-primary-100" />
         </div>
         {/* Title - 2 lines */}
         <div className="space-y-2 mb-3">

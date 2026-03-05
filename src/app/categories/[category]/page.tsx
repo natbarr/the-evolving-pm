@@ -149,22 +149,22 @@ export default async function CategoryPage({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-8">
-          <ol className="flex items-center gap-2 text-sm text-primary-500">
+          <ol className="flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-wide text-primary-400">
             <li>
-              <Link href="/categories" className="hover:text-primary-700">
+              <Link href="/categories" className="hover:text-primary-700 transition-colors">
                 Categories
               </Link>
             </li>
             <li>/</li>
-            <li className="text-primary-700">{category.name}</li>
+            <li className="text-primary-600">{category.name}</li>
           </ol>
         </nav>
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-primary-900 mb-4">
+          <h1 className="font-display text-3xl font-normal tracking-tight text-primary-900 mb-3">
             {category.name}
           </h1>
-          <p className="text-lg text-primary-600 max-w-3xl">
+          <p className="text-primary-500 max-w-2xl leading-relaxed">
             {category.description}
           </p>
         </div>

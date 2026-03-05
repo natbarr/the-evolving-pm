@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CheckCircle } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -96,7 +97,7 @@ export default function SubmitPage() {
     if (isFieldValid(field, validator)) {
       return cn(baseClasses, "border-green-300 focus:border-green-500 focus:ring-green-500");
     }
-    return cn(baseClasses, "border-primary-200 focus:border-accent-500 focus:ring-accent-500");
+    return cn(baseClasses, "border-primary-200 focus:border-accent-600 focus:ring-accent-600");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -164,11 +165,14 @@ export default function SubmitPage() {
   return (
     <div className="py-12">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-primary-900 mb-4">
+        <div className="mb-10">
+          <p className="font-mono text-[0.6875rem] font-medium uppercase tracking-widest text-accent-600 mb-2">
+            Contribute
+          </p>
+          <h1 className="font-display text-3xl font-normal tracking-tight text-primary-900 mb-3">
             Submit a Resource
           </h1>
-          <p className="text-lg text-primary-600">
+          <p className="text-primary-500">
             Know a great resource for Product Managers learning about AI? Share
             it with the community. We review every submission and add quality
             resources to the library.
@@ -177,23 +181,10 @@ export default function SubmitPage() {
 
         {status === "success" ? (
           <div className="text-center py-12 bg-green-50 rounded-xl" role="status" aria-live="polite">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 mb-4">
-              <svg
-                className="h-6 w-6 text-green-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 12.75l6 6 9-13.5"
-                />
-              </svg>
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 mb-4">
+              <CheckCircle size={24} weight="regular" aria-hidden="true" />
             </div>
-            <h2 className="text-xl font-semibold text-green-800 mb-2">
+            <h2 className="font-display text-xl font-normal tracking-tight text-green-800 mb-2">
               Thank You!
             </h2>
             <p className="text-green-700 mb-6">
@@ -320,66 +311,27 @@ export default function SubmitPage() {
         )}
 
         <div className="mt-12 pt-8 border-t border-primary-200">
-          <h2 className="text-lg font-semibold text-primary-900 mb-4">
+          <h2 className="font-display text-lg font-medium text-primary-900 mb-4">
             What makes a good submission?
           </h2>
           <ul className="space-y-3 text-primary-600">
             <li className="flex items-start gap-3">
-              <svg
-                className="h-5 w-5 text-accent-500 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>
+              <CheckCircle size={18} weight="regular" className="text-accent-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
+              <span className="text-sm leading-relaxed">
                 <strong>Relevant to PMs:</strong> Content that helps Product
                 Managers understand or work with AI
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <svg
-                className="h-5 w-5 text-accent-500 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>
+              <CheckCircle size={18} weight="regular" className="text-accent-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
+              <span className="text-sm leading-relaxed">
                 <strong>High quality:</strong> Well-written, accurate, and
                 actionable content
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <svg
-                className="h-5 w-5 text-accent-500 mt-0.5 flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>
+              <CheckCircle size={18} weight="regular" className="text-accent-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
+              <span className="text-sm leading-relaxed">
                 <strong>Accessible:</strong> Free or clearly priced content from
                 reputable sources
               </span>
