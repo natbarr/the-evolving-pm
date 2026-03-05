@@ -14,11 +14,11 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-primary-900 text-white hover:bg-primary-800 focus-visible:ring-primary-500",
+    "bg-accent-600 text-white hover:bg-accent-700 focus-visible:ring-accent-600",
   secondary:
-    "bg-accent-700 text-white hover:bg-accent-800 focus-visible:ring-accent-500",
+    "bg-accent-600 text-white hover:bg-accent-700 focus-visible:ring-accent-600",
   outline:
-    "border border-primary-300 text-primary-700 hover:bg-primary-50 focus-visible:ring-primary-500",
+    "border border-primary-300 text-primary-700 hover:border-primary-500 hover:text-primary-900 focus-visible:ring-primary-500",
 };
 
 const sizes = {
