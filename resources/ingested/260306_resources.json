@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-06"
+  },
+  "resources": [
+    {
+      "title": "CLAUDE.md & AGENTS.md Files: Give Your AI Agent Permanent Memory",
+      "url": "https://www.youtube.com/watch?v=bEpU2svjd9w",
+      "category": "technical-skills",
+      "level": "beginner",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-10",
+      "last_verified": "2026-03-06",
+      "next_review": "2026-06-06",
+      "confidence": 4,
+      "author": "Hannah Stulberg",
+      "source": "youtube.com",
+      "summary": "This video by Hannah Stulberg (Part 5 of her 'Claude Code for Everything' series) provides a deep dive into CLAUDE.md and AGENTS.md files as persistent memory systems for AI coding agents. The core framework identifies four types of essential context every memory file should contain: document index, people involved, project identity, and workflows/preferences. The video explains a hierarchical folder structure with four levels—personal preferences, company context, area-specific knowledge, and project details—where higher levels should be shorter to optimize the finite 'thinking room' budget.\n\nA critical constraint is highlighted: around 100–150 instructions spread across all CLAUDE.md files combined is the practical limit before instruction-following quality degrades. The video covers three methods for generating files (Plan Mode interview, loading existing docs, and session generation), maintenance strategies, and the @ import syntax for modular context management across projects."
+    },
+    {
+      "title": "Claude Code for Product Managers (Sachin Rekhi / Reforge)",
+      "url": "https://www.youtube.com/watch?v=zsAAaY8a63Q",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "video",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-02-01",
+      "last_verified": "2026-03-06",
+      "next_review": "2026-06-06",
+      "confidence": 4,
+      "author": "Sachin Rekhi",
+      "source": "youtube.com (Reforge)",
+      "summary": "This video from Reforge features Sachin Rekhi (former Head of Product at LinkedIn Sales Navigator) discussing how product managers can leverage Claude Code and AI prototyping tools to transform their product development process. Rekhi presents AI prototyping as enabling a 'product shaping' methodology—where teams simultaneously explore multiple problem-solution pairs before committing to development. The modern loop follows Anthropic's internal approach: Prototype, Dogfood, Prioritize, Launch.\n\nRekhi categorizes AI tools into three tiers: AI app builders as starting points for non-technical PMs, purpose-built AI prototyping tools for design-system integration, and AI coding tools (Cursor, Claude Code) for maximum sophistication. He emphasizes critical myths to avoid: prototypes are discovery tools not production pipelines, their real power lies in divergent exploration rather than faster visualization, and they complement rather than replace documentation."
+    }
+  ],
+  "rejected": []
+}
