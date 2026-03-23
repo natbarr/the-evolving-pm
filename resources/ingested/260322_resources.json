@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-22"
+  },
+  "resources": [
+    {
+      "title": "Context Rot: The Complete Guide",
+      "url": "https://www.morphllm.com/context-rot",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "model-dependent",
+      "access_type": "free",
+      "publication_date": "2026-03-13",
+      "last_verified": "2026-03-22",
+      "next_review": "2026-07-22",
+      "confidence": 4,
+      "author": "Morph Engineering",
+      "source": "morphllm.com",
+      "summary": "This comprehensive guide from Morph Engineering explains \"context rot\"—the measurable degradation in LLM output quality as input context grows longer. Drawing on research across 18 frontier models, the article identifies three core mechanisms: the lost-in-the-middle effect (models attend strongly to the beginning and end of context but perform 30%+ worse on middle sections), attention dilution (transformer attention spreads across exponentially more token relationships as context grows—100M connections at 10K tokens, 10B at 100K tokens), and distractor interference (semantically similar but irrelevant content actively misleads models). Critically, these effects occur even when models are well within their stated context window limits.\n\nThe guide applies these findings to AI coding agents, showing that agents spending 60% of their time retrieving context experience dramatically declining success rates after 35 minutes of task time, with failure rates quadrupling when task duration doubles. Common mitigation attempts—larger context windows and post-hoc compression—are debunked as ineffective or counterproductive.\n\nFor product managers building AI-powered applications, context architecture is a first-class product concern. The proven solution is context isolation through subagent architecture: delegating retrieval to specialized agents with separate context windows, keeping the primary model's context clean and focused. This has direct implications for how PMs should spec, evaluate, and design AI features that rely on long-context reasoning or multi-step agent workflows."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "Twitter Thread (juliandeangelis)",
+      "url": "https://x.com/juliandeangeIis/status/2027888587975569534",
+      "date_evaluated": "2026-03-22",
+      "reason": "Content inaccessible; X/Twitter blocked automated fetching"
+    }
+  ]
+}
