@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-26"
+  },
+  "resources": [
+    {
+      "title": "My LLM Coding Workflow Going into 2026",
+      "url": "https://addyo.substack.com/p/my-llm-coding-workflow-going-into",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2025-12-18",
+      "last_verified": "2026-03-26",
+      "next_review": "2027-03-26",
+      "confidence": 4,
+      "author": "Addy Osmani",
+      "source": "addyo.substack.com",
+      "summary": "Addy Osmani (Chrome Engineering Lead at Google) presents a disciplined, human-directed approach to AI-assisted coding he calls 'AI-assisted engineering.' Rather than treating LLMs as autonomous agents, the framework positions the engineer—or product manager—as the director of a capable but fallible collaborator. The workflow centers on eight interconnected practices: planning first (writing detailed specs before touching code), iterative chunking (breaking work into small discrete tasks to prevent LLM confusion), context provision (supplying relevant code, docs, and constraints proactively), model selection (choosing the right tool for each task type), testing & review (maintaining rigorous quality gates including automated tests and manual review), version control discipline (frequent commits as rollback checkpoints), customization (tuning AI behavior through CLAUDE.md-style rules files), and continuous learning (using AI collaboration to deepen rather than atrophy skills).\n\nThe article is particularly valuable for PMs who are themselves vibe-coding or prototyping with AI tools, as it translates engineering-first principles into actionable workflow habits. The 'planning first' approach mirrors best practices for writing AI agent specs—understanding the full problem before delegating to AI prevents compounding errors. The emphasis on human oversight throughout the development lifecycle also gives PMs useful mental models for how to govern AI-assisted work across their teams. Osmani's framing that 'the human engineer remains the director of the show' applies equally to any knowledge worker leveraging LLMs."
+    },
+    {
+      "title": "The Four Claude Code Building Blocks",
+      "url": "https://productpeak.substack.com/p/the-four-claude-code-building-blocks",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "tool-specific",
+      "access_type": "free",
+      "publication_date": "2026-03-20",
+      "last_verified": "2026-03-26",
+      "next_review": "2026-06-26",
+      "confidence": 4,
+      "author": "Aleksander Dytko",
+      "source": "productpeak.substack.com",
+      "summary": "Aleksander Dytko breaks down Claude Code into four foundational building blocks that together enable sophisticated AI automation workflows. The first two are infrastructure layers: CLAUDE.md (a persistent system prompt that gives Claude context about your role, tools, preferences, and rules—eliminating repeated re-explanation) and MCP Servers (tool connectors linking Claude to external systems like Todoist, GitHub, calendars, and documentation). The second two are behavioral layers: Skills (structured, repeatable workflows with predictable outputs, ideal for consistent tasks like processing meeting notes) and Custom Agents (autonomous workers that apply judgment and adapt behavior based on context, ideal for tasks like trip planning where each execution differs).\n\nThe article's core contribution is clarifying when to build each type: use Skills for process consistency where predictability matters; build Agents when the task requires reasoning and judgment across variable inputs. Dytko also introduces parallel Subagents—multiple agents running simultaneously for independent task components—and maps how these same concepts scale from personal productivity setups to enterprise AI platforms. The practical examples are PM-specific (meeting workflows, personal task management, travel planning), making the abstractions immediately actionable.\n\nFor product managers learning Claude Code, this piece serves as an essential conceptual map. Understanding the distinction between skills (deterministic) and agents (probabilistic/adaptive) directly informs how PMs should spec, test, and evaluate AI-powered features in their products. The CLAUDE.md and MCP sections complement other resources in the Technical Skills section and contextualize why system prompt design is so foundational to AI product behavior."
+    }
+  ],
+  "rejected": []
+}
