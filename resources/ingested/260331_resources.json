@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-03-31"
+  },
+  "resources": [
+    {
+      "title": "One Year Later: Raising the AI Fluency Bar for Every Zapier Hire",
+      "url": "https://zapier.com/blog/raising-ai-fluency-bar-in-hiring/",
+      "category": "career",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "career",
+      "access_type": "free",
+      "publication_date": "2026-03-31",
+      "last_verified": "2026-03-31",
+      "next_review": "2026-09-30",
+      "confidence": 4,
+      "author": "Tracy St. Dic",
+      "source": "zapier.com",
+      "summary": "Zapier published an updated version of its AI fluency hiring rubric one year after making minimum AI competency a requirement for all new hires. The article reveals how the company evolved its standards after achieving 100% AI adoption across the organization. The original three-pillar framework (Usage, Integration, Impact) has been enhanced with a fourth pillar—Accountability—which emphasizes critical evaluation, quality assurance, and taking ownership of AI-driven outcomes rather than simply using AI tools. Baseline expectations have been raised substantially: acceptable candidates must now demonstrate AI embedded in core work with repeatable systems and measurable impact, not isolated or experimental tool usage.\n\nTwo other significant changes offer strong signal for AI PM job seekers. First, the rubric now assesses trajectory rather than static skill snapshots—evaluators look for learning momentum and forward progression, meaning candidates who are actively developing AI fluency are evaluated more favorably than those who plateau. Second, manager requirements have been meaningfully increased: leaders must now demonstrate team-wide AI adoption and workflow redesign, not just personal fluency. The skills assessment methodology has also been overhauled, with evaluators now observing real-time AI interaction during exercises to assess iteration patterns and reasoning processes rather than relying on self-reported proficiency.\n\nFor product managers pursuing AI PM roles or seeking to advance within AI-native organizations, this article provides a concrete benchmark. Zapier is one of the few companies to publicly document the evolution of its AI hiring criteria, making it a rare primary source for understanding what 'AI fluency' means in practice. The accountability pillar and the manager requirements are particularly instructive for PMs who are building or managing AI-enabled teams—they define the behaviors that distinguish AI-native leaders from AI-curious ones."
+    }
+  ],
+  "rejected": []
+}
