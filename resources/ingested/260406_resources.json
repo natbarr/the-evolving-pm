@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "assessment_date": "2026-04-06"
+  },
+  "resources": [
+    {
+      "title": "Evals for PMs: A Practical Guide to AI Product Quality",
+      "url": "https://www.braintrust.dev/blog/evals-for-pms",
+      "category": "technical-skills",
+      "level": "intermediate",
+      "format": "article",
+      "status": "active",
+      "content_type": "conceptual",
+      "access_type": "free",
+      "publication_date": "2026-03-17",
+      "last_verified": "2026-04-06",
+      "next_review": "2027-04-06",
+      "confidence": 4,
+      "author": "Braintrust Team",
+      "source": "braintrust.dev",
+      "summary": "The Braintrust team's practical guide reframes AI quality measurement as a product management discipline, arguing that PMs who rely on manual testing and gut feel leave systematic improvement on the table. It introduces evals as three-component systems: datasets (collections of real user interactions covering golden standards and known failure modes), tasks (the system under evaluation, from a single prompt to a full agent pipeline), and scorers (independent quality dimensions measured separately to prevent conflating distinct aspects of performance). The framework's central insight is that breaking quality into discrete, measurable dimensions enables explicit tradeoffs—the kind of evidence-based reasoning that distinguishes product decisions from hunches.\n\nThe piece walks through a continuous improvement loop: spot failure patterns in production logs, curate targeted datasets from real interactions, test prompt and model changes in playgrounds, apply human review for subjective qualities, deploy, and re-evaluate. A cross-functional collaboration model assigns clear ownership—PMs define success criteria and analyze results, AI engineers build scorers and advanced tasks, subject matter experts provide domain knowledge, and data analysts interpret patterns. Three development phases map eval maturity from Incubation (defining ideal use cases, building golden datasets) through Refinement (weekly structured team reviews) to Scale (automated continuous evaluation pipelines incorporating production feedback).\n\nFor AI PMs, evals represent the transition from \"I think this improved\" to evidence-based product decisions. The guide's recommendation to start minimal—five to ten real inputs and one clearly defined success criterion—makes the methodology immediately actionable without requiring data engineering support. Phase 3 of this learning path explicitly targets the ability to evaluate AI outputs, and this article is one of the clearest PM-first explanations of how to build that capability from the ground up."
+    }
+  ],
+  "rejected": [
+    {
+      "title": "One Year Later: Raising the AI Fluency Bar for Every Zapier Hire",
+      "url": "https://zapier.com/blog/raising-ai-fluency-bar-in-hiring",
+      "date_evaluated": "2026-04-06",
+      "reason": "Duplicate — already evaluated and added on 2026-03-31"
+    }
+  ]
+}
